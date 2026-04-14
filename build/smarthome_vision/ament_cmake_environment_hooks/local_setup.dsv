@@ -1,0 +1,4 @@
+source;share/smarthome_vision/environment/ament_prefix_path.sh
+source;share/smarthome_vision/environment/library_path.sh
+source;share/smarthome_vision/environment/path.sh
+source;share/smarthome_vision/environment/pythonpath.sh

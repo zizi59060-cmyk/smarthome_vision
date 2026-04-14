@@ -1,0 +1,34 @@
+smarthome_vision_node:
+  ros__parameters:
+    image_topic: /camera/image_raw
+    serial_device: /dev/gimbal
+    baudrate: 115200
+
+    input_width: 640
+    input_height: 640
+    conf_threshold: 0.25
+    score_threshold: 0.25
+    show_debug: true
+    use_cuda_preprocess: true
+
+    keypoint_engine_path: /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/object.engine
+    use_keypoint_detector: false
+
+    bbox_engine_path: /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/object.engine
+    use_bbox_detector: true
+
+    enable_bbox_fallback: true
+    force_bbox_only: false
+
+    camera_matrix: [800.0, 0.0, 320.0,
+                    0.0, 800.0, 240.0,
+                    0.0, 0.0, 1.0]
+
+    dist_coeffs: [0.0, 0.0, 0.0, 0.0, 0.0]
+
+    class_names: [0, 1, 2, 3]
+
+    class_sizes: [0.050, 0.050,
+                  0.050, 0.050,
+                  0.050, 0.050,
+                  0.050, 0.050]

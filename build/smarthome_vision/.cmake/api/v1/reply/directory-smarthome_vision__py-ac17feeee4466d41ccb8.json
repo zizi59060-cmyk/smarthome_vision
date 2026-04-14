@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "smarthome_vision__py",
+		"source" : "/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/smarthome_vision__py"
+	}
+}

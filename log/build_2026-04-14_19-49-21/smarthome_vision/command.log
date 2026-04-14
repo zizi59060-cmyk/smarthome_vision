@@ -1,0 +1,4 @@
+Invoking command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia4/smarthome_2026/ws/build/smarthome_vision -- -j8 -l8
+Invoked command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia4/smarthome_2026/ws/build/smarthome_vision -- -j8 -l8
+Invoking command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia4/smarthome_2026/ws/build/smarthome_vision
+Invoked command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia4/smarthome_2026/ws/build/smarthome_vision

@@ -1,0 +1,4 @@
+source;share/smarthome_vision/local_setup.bash
+source;share/smarthome_vision/local_setup.dsv
+source;share/smarthome_vision/local_setup.sh
+source;share/smarthome_vision/local_setup.zsh
