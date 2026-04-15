@@ -7,17 +7,17 @@ smarthome_vision_node:
     input_width: 640
     input_height: 640
     conf_threshold: 0.25
-    score_threshold: 0.8
+    score_threshold: 0.5
     show_debug: true
     use_cuda_preprocess: true
 
     keypoint_engine_path: /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/object.engine
-    use_keypoint_detector: false
+    use_keypoint_detector: true
 
     bbox_engine_path: /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/object.engine
-    use_bbox_detector: true
+    use_bbox_detector: false
 
-    enable_bbox_fallback: true
+    enable_bbox_fallback: false
     force_bbox_only: false
 
     camera_matrix: [800.0, 0.0, 320.0,
@@ -28,7 +28,4 @@ smarthome_vision_node:
 
     class_names: [0, 1, 2, 3]
 
-    class_sizes: [0.050, 0.050,
-                  0.050, 0.050,
-                  0.050, 0.050,
-                  0.050, 0.050]
+    class_sizes: [0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06]

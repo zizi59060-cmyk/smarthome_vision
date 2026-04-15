@@ -7,14 +7,16 @@
 #include <opencv2/cudaarithm.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #include <opencv2/cudawarping.hpp>
+#include <opencv2/dnn/dnn.hpp>
 #include <opencv2/imgproc.hpp>
 
 #include <algorithm>
+#include <array>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
-#include <cmath> // 引入 cmath 以使用 std::exp
 
 namespace smarthome_vision
 {
@@ -39,6 +41,9 @@ inline size_t getSizeByDim(const nvinfer1::Dims & dims)
 {
   size_t size = 1;
   for (int i = 0; i < dims.nbDims; ++i) {
+    if (dims.d[i] < 0) {
+      throw std::runtime_error("tensor shape still contains dynamic dimension");
+    }
     size *= static_cast<size_t>(dims.d[i]);
   }
   return size;
@@ -49,6 +54,77 @@ inline void checkCuda(cudaError_t code, const std::string & msg)
   if (code != cudaSuccess) {
     throw std::runtime_error(msg + ": " + cudaGetErrorString(code));
   }
+}
+
+inline float clampf(float v, float lo, float hi)
+{
+  return std::max(lo, std::min(v, hi));
+}
+
+inline float iouRect(const cv::Rect2f & a, const cv::Rect2f & b)
+{
+  const float xx1 = std::max(a.x, b.x);
+  const float yy1 = std::max(a.y, b.y);
+  const float xx2 = std::min(a.x + a.width,  b.x + b.width);
+  const float yy2 = std::min(a.y + a.height, b.y + b.height);
+
+  const float w = std::max(0.0f, xx2 - xx1);
+  const float h = std::max(0.0f, yy2 - yy1);
+  const float inter = w * h;
+  const float uni = a.area() + b.area() - inter;
+
+  if (uni <= 1e-6f) {
+    return 0.0f;
+  }
+  return inter / uni;
+}
+
+std::vector<RawPrediction> applyNms(
+  const std::vector<RawPrediction> & input,
+  float iou_threshold)
+{
+  if (input.empty()) {
+    return {};
+  }
+
+  std::vector<int> order(input.size());
+  for (size_t i = 0; i < input.size(); ++i) {
+    order[i] = static_cast<int>(i);
+  }
+
+  std::sort(order.begin(), order.end(),
+    [&](int a, int b) {
+      return input[a].score > input[b].score;
+    });
+
+  std::vector<RawPrediction> output;
+  std::vector<bool> removed(input.size(), false);
+
+  for (size_t oi = 0; oi < order.size(); ++oi) {
+    const int i = order[oi];
+    if (removed[i]) {
+      continue;
+    }
+
+    output.push_back(input[i]);
+
+    for (size_t oj = oi + 1; oj < order.size(); ++oj) {
+      const int j = order[oj];
+      if (removed[j]) {
+        continue;
+      }
+
+      if (input[i].class_id != input[j].class_id) {
+        continue;
+      }
+
+      if (iouRect(input[i].bbox, input[j].bbox) > iou_threshold) {
+        removed[j] = true;
+      }
+    }
+  }
+
+  return output;
 }
 
 }  // namespace
@@ -71,6 +147,9 @@ TRTDetector::TRTDetector(
 {
   if (engine_path_.empty()) {
     throw std::runtime_error("engine path is empty");
+  }
+  if (input_width_ <= 0 || input_height_ <= 0) {
+    throw std::runtime_error("invalid input size");
   }
 
   auto engine_data = loadEngineFile(engine_path_);
@@ -123,8 +202,12 @@ TRTDetector::TRTDetector(
   }
 
   auto output_dims = context_->getTensorShape(output_name_.c_str());
+  for (int i = 0; i < output_dims.nbDims; ++i) {
+    if (output_dims.d[i] < 0) {
+      throw std::runtime_error("output tensor shape is still dynamic after setting input shape");
+    }
+  }
 
-  // 初始化时打印一次模型输出维度，确认加载正常
   std::cout << "\n========== 模型加载成功 ==========\n";
   std::cout << "Engine Path: " << engine_path_ << "\n";
   std::cout << "Output Shape: [ ";
@@ -172,6 +255,11 @@ std::vector<char> TRTDetector::loadEngineFile(const std::string & path)
 
   std::vector<char> buffer(size);
   file.read(buffer.data(), static_cast<std::streamsize>(size));
+
+  if (!file) {
+    throw std::runtime_error("failed to read engine file fully: " + path);
+  }
+
   return buffer;
 }
 
@@ -181,6 +269,8 @@ void TRTDetector::preprocess(
   float & scale_x,
   float & scale_y) const
 {
+  // 先保持你现在的直接 resize 逻辑
+  // 若训练时使用的是 letterbox，后续再统一改预处理和反变换
   scale_x = static_cast<float>(image.cols) / static_cast<float>(input_width_);
   scale_y = static_cast<float>(image.rows) / static_cast<float>(input_height_);
 
@@ -191,6 +281,7 @@ void TRTDetector::preprocess(
     gpu_bgr.upload(image);
     cv::cuda::resize(gpu_bgr, gpu_resized, cv::Size(input_width_, input_height_));
     cv::cuda::cvtColor(gpu_resized, gpu_rgb, cv::COLOR_BGR2RGB);
+
     cv::Mat rgb;
     gpu_rgb.download(rgb);
     rgb.convertTo(rgb_float, CV_32F, 1.0 / 255.0);
@@ -247,11 +338,33 @@ std::vector<RawPrediction> TRTDetector::infer(const cv::Mat & image)
 
   checkCuda(cudaStreamSynchronize(stream_), "cudaStreamSynchronize failed");
 
-  // 【核心修改1】设定正确的步长为 18
-  const int stride = 18;
-  const int num_preds = static_cast<int>(output_numel_ / stride);
+  auto output_dims = context_->getTensorShape(output_name_.c_str());
 
-  return decode(host_output_.data(), num_preds, 0, scale_x, scale_y, image.cols, image.rows);
+  int num_preds = 0;
+  int stride = 0;
+
+  if (output_dims.nbDims == 3) {
+    num_preds = output_dims.d[1];
+    stride = output_dims.d[2];
+  } else {
+    stride = output_keypoints_ ? 18 : 6;
+    num_preds = static_cast<int>(output_numel_ / stride);
+  }
+
+  if (stride <= 0 || num_preds <= 0) {
+    return {};
+  }
+
+  auto decoded = decode(
+    host_output_.data(),
+    num_preds,
+    0,
+    scale_x,
+    scale_y,
+    image.cols,
+    image.rows);
+
+  return applyNms(decoded, 0.45f);
 }
 
 std::vector<RawPrediction> TRTDetector::decode(
@@ -270,53 +383,68 @@ std::vector<RawPrediction> TRTDetector::decode(
     return results;
   }
 
-  // 【核心修改2】设定正确的步长为 18
-  const int stride = 18;
+  // 你的模型输出是 [N, 300, 18]
+  // [x1, y1, x2, y2, score, class_id, kp0x, kp0y, kp0v, kp1x, kp1y, kp1v, kp2x, kp2y, kp2v, kp3x, kp3y, kp3v]
+  const int stride = output_keypoints_ ? 18 : 6;
 
   for (int i = 0; i < num_preds; ++i) {
     const float * row = output + i * stride;
 
-    // --- 核心修复：引入 Sigmoid 计算真实概率 ---
-    const float raw_score = row[4];
-    const float score = 1.0f / (1.0f + std::exp(-raw_score));
-    
-    // 如果转换后的真实概率低于阈值，则跳过
+    // 注意：这里不要再做 sigmoid
+    const float score = row[4];
     if (score < score_thres_) {
       continue;
     }
-    // ------------------------------------------
+
+    float x1 = row[0] * scale_x;
+    float y1 = row[1] * scale_y;
+    float x2 = row[2] * scale_x;
+    float y2 = row[3] * scale_y;
+
+    x1 = clampf(x1, 0.0f, static_cast<float>(image_w - 1));
+    y1 = clampf(y1, 0.0f, static_cast<float>(image_h - 1));
+    x2 = clampf(x2, 0.0f, static_cast<float>(image_w - 1));
+    y2 = clampf(y2, 0.0f, static_cast<float>(image_h - 1));
+
+    if (x2 <= x1 || y2 <= y1) {
+      continue;
+    }
 
     RawPrediction pred;
     pred.score = score;
-    // 第 5 列是类别 ID
-    pred.class_id = static_cast<int>(row[5]);
+    pred.class_id = static_cast<int>(std::lround(row[5]));
+    pred.bbox = cv::Rect2f(x1, y1, x2 - x1, y2 - y1);
 
-    // 读取包围框 cx, cy, w, h
-    const float cx = row[0] * scale_x;
-    const float cy = row[1] * scale_y;
-    const float w  = row[2] * scale_x;
-    const float h  = row[3] * scale_y;
-
-    float x1 = cx - 0.5f * w;
-    float y1 = cy - 0.5f * h;
-    float x2 = cx + 0.5f * w;
-    float y2 = cy + 0.5f * h;
-
-    // 限制在图像边界内
-    x1 = std::max(0.0f, std::min(x1, static_cast<float>(image_w - 1)));
-    y1 = std::max(0.0f, std::min(y1, static_cast<float>(image_h - 1)));
-    x2 = std::max(0.0f, std::min(x2, static_cast<float>(image_w - 1)));
-    y2 = std::max(0.0f, std::min(y2, static_cast<float>(image_h - 1)));
-
-    pred.bbox = cv::Rect2f(x1, y1, std::max(0.0f, x2 - x1), std::max(0.0f, y2 - y1));
-
-    // 解析四个关键点 (跳过中间的置信度列)
     if (output_keypoints_) {
       pred.has_keypoints = true;
-      pred.keypoints[0] = cv::Point2f(row[6]  * scale_x, row[7]  * scale_y);
-      pred.keypoints[1] = cv::Point2f(row[9]  * scale_x, row[10] * scale_y);
-      pred.keypoints[2] = cv::Point2f(row[12] * scale_x, row[13] * scale_y);
-      pred.keypoints[3] = cv::Point2f(row[15] * scale_x, row[16] * scale_y);
+
+      constexpr int kNumKpts = 4;
+      constexpr int kKptBase = 6;
+      constexpr int kKptStride = 3;
+
+      std::array<float, kNumKpts> kpt_vis{};
+
+      for (int k = 0; k < kNumKpts; ++k) {
+        const int base = kKptBase + k * kKptStride;
+        const float kx = row[base + 0] * scale_x;
+        const float ky = row[base + 1] * scale_y;
+        const float kv = row[base + 2];
+
+        pred.keypoints[k] = cv::Point2f(kx, ky);
+        kpt_vis[k] = kv;
+      }
+
+      int valid_kpt_count = 0;
+      for (int k = 0; k < kNumKpts; ++k) {
+        if (kpt_vis[k] >= conf_thres_) {
+          ++valid_kpt_count;
+        }
+      }
+
+      // 你的后处理依赖四个角点时，少一个都先丢掉
+      if (valid_kpt_count < kNumKpts) {
+        continue;
+      }
     } else {
       pred.has_keypoints = false;
     }

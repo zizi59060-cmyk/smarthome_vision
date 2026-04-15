@@ -294,6 +294,15 @@ CMakeFiles/smarthome_vision_core.dir/src/trt_detector.cpp.o: \
  /usr/local/include/opencv4/opencv2/imgproc.hpp \
  /usr/local/include/opencv4/opencv2/imgproc/segmentation.hpp \
  /usr/local/include/opencv4/opencv2/cudawarping.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dnn.hpp \
+ /usr/local/include/opencv4/opencv2/core/async.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/version.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dict.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/layer.hpp \
+ /usr/local/include/opencv4/opencv2/dnn.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dnn.inl.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dnn.hpp \
  /usr/include/c++/11/fstream /usr/include/c++/11/bits/codecvt.h \
  /usr/include/aarch64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/aarch64-linux-gnu/c++/11/bits/c++io.h \

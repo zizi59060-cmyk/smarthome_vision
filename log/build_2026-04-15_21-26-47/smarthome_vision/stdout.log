@@ -50,14 +50,18 @@
 -- Generating done
 -- Build files have been written to: /home/nvidia4/smarthome_2026/ws/build/smarthome_vision
 [  2%] [34m[1mGenerating C code for ROS interfaces[0m
-[  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
-[  7%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/gimbal_bridge.cpp.o[0m
-[ 10%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[  5%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[  7%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[ 10%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/crc16.cpp.o[0m
 [ 15%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/pose_solver.cpp.o[0m
-[ 15%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/crc16.cpp.o[0m
+[ 15%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/gimbal_bridge.cpp.o[0m
 [ 17%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/trt_detector.cpp.o[0m
 [ 17%] Built target ament_cmake_python_copy_smarthome_vision
 [ 20%] [32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/detector.cpp.o[0m
+[ 20%] Built target smarthome_vision__rs
+[ 20%] Built target smarthome_vision__cpp
+[ 22%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[ 25%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
 running egg_info
 creating smarthome_vision.egg-info
 writing smarthome_vision.egg-info/PKG-INFO
@@ -66,36 +70,32 @@ writing top-level names to smarthome_vision.egg-info/top_level.txt
 writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'
 reading manifest file 'smarthome_vision.egg-info/SOURCES.txt'
 writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'
-[ 22%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_generator_c.dir/rosidl_generator_c/smarthome_vision/msg/detail/detected_target__functions.c.o[0m
-[ 22%] Built target smarthome_vision__cpp
-[ 25%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
-[ 25%] Built target smarthome_vision__rs
-[ 25%] Built target ament_cmake_python_build_smarthome_vision_egg
-[ 27%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
-[ 30%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[ 27%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_generator_c.dir/rosidl_generator_c/smarthome_vision/msg/detail/detected_target__functions.c.o[0m
+[ 30%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[ 30%] Built target ament_cmake_python_build_smarthome_vision_egg
 [ 32%] [32m[1mLinking C shared library libsmarthome_vision__rosidl_generator_c.so[0m
 [ 32%] Built target smarthome_vision__rosidl_generator_c
 [ 35%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
 [ 37%] [34m[1mGenerating C introspection for ROS interfaces[0m
-[ 40%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/smarthome_vision/msg/detected_target__type_support.cpp.o[0m
-[ 42%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/smarthome_vision/msg/detail/dds_fastrtps/detected_target__type_support.cpp.o[0m
-[ 45%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/smarthome_vision/msg/detail/detected_target__type_support.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/smarthome_vision/msg/detail/detected_target__type_support.cpp.o[0m
+[ 42%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/smarthome_vision/msg/detected_target__type_support.cpp.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/smarthome_vision/msg/detail/dds_fastrtps/detected_target__type_support.cpp.o[0m
 [ 47%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/smarthome_vision/msg/detail/detected_target__type_support.c.o[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/smarthome_vision/msg/detail/detected_target__type_support_c.cpp.o[0m
-[ 52%] [32m[1mLinking C shared library libsmarthome_vision__rosidl_typesupport_introspection_c.so[0m
-[ 52%] Built target smarthome_vision__rosidl_typesupport_introspection_c
-[ 55%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
-[ 57%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_cpp.so[0m
+[ 50%] [32m[1mLinking C shared library libsmarthome_vision__rosidl_typesupport_introspection_c.so[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/smarthome_vision/msg/detail/detected_target__type_support_c.cpp.o[0m
+[ 55%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_cpp.so[0m
+[ 55%] Built target smarthome_vision__rosidl_typesupport_introspection_c
+[ 57%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
 [ 57%] Built target smarthome_vision__rosidl_typesupport_cpp
-[ 60%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so[0m
-[ 62%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_c.so[0m
+[ 60%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_introspection_cpp.so[0m
+[ 62%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so[0m
 [ 65%] [32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_c.dir/rosidl_typesupport_c/smarthome_vision/msg/detected_target__type_support.cpp.o[0m
-[ 65%] Built target smarthome_vision__rosidl_typesupport_fastrtps_cpp
 [ 67%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_c.so[0m
-[ 70%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_introspection_cpp.so[0m
+[ 67%] Built target smarthome_vision__rosidl_typesupport_introspection_cpp
+[ 67%] Built target smarthome_vision__rosidl_typesupport_c
+[ 70%] [32m[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_c.so[0m
+[ 70%] Built target smarthome_vision__rosidl_typesupport_fastrtps_cpp
 [ 70%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c
-[ 70%] Built target smarthome_vision__rosidl_typesupport_c
-[ 70%] Built target smarthome_vision__rosidl_typesupport_introspection_cpp
 [ 70%] Built target smarthome_vision
 [ 72%] [34m[1mGenerating Python code for ROS interfaces[0m
 [ 72%] Built target smarthome_vision__py
@@ -103,20 +103,18 @@ writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'
 [ 77%] [32m[1mLinking CXX shared library libsmarthome_vision_core.so[0m
 [ 80%] [32m[1mLinking C shared library rosidl_generator_py/smarthome_vision/libsmarthome_vision__rosidl_generator_py.so[0m
 [ 80%] Built target smarthome_vision__rosidl_generator_py
-[ 82%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_c.c.o[0m
+[ 85%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_c.c.o[0m
 [ 85%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
 [ 87%] [32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_introspection_c.c.o[0m
-[ 87%] Built target smarthome_vision_core
-[ 90%] [32mBuilding CXX object CMakeFiles/vision_node.dir/src/vision_node.cpp.o[0m
+[ 90%] [32m[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so[0m
 [ 92%] [32m[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so[0m
 [ 95%] [32m[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so[0m
-[ 97%] [32m[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so[0m
-[ 97%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c__pyext
-[ 97%] Built target smarthome_vision__rosidl_typesupport_introspection_c__pyext
-[ 97%] Built target smarthome_vision__rosidl_typesupport_c__pyext
+[ 95%] Built target smarthome_vision_core
+[ 95%] Built target smarthome_vision__rosidl_typesupport_c__pyext
+[ 95%] Built target smarthome_vision__rosidl_typesupport_introspection_c__pyext
+[ 95%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c__pyext
+[ 97%] [32mBuilding CXX object CMakeFiles/vision_node.dir/src/vision_node.cpp.o[0m
 [100%] [32m[1mLinking CXX executable vision_node[0m
-/usr/bin/ld: warning: libopencv_imgcodecs.so.4.5d, needed by /opt/ros/humble/lib/libcv_bridge.so, may conflict with libopencv_imgcodecs.so.410
-/usr/bin/ld: warning: libopencv_core.so.4.5d, needed by /opt/ros/humble/lib/libcv_bridge.so, may conflict with libopencv_core.so.410
 [100%] Built target vision_node
 -- Install configuration: ""
 -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/rosidl_interfaces/smarthome_vision

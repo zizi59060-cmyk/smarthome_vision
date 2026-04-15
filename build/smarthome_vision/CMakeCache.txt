@@ -513,8 +513,8 @@ OPENSSL_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 OPENSSL_SSL_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libssl.so
 
-//No help, variable specified on the command line.
-OpenCV_DIR:UNINITIALIZED=/usr/local/lib/cmake/opencv4
+//The directory containing a CMake configuration file for OpenCV.
+OpenCV_DIR:PATH=/usr/local/lib/cmake/opencv4
 
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
