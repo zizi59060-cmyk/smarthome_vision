@@ -4,3 +4,5 @@ smarthome_vision.egg-info/PKG-INFO
 smarthome_vision.egg-info/SOURCES.txt
 smarthome_vision.egg-info/dependency_links.txt
 smarthome_vision.egg-info/top_level.txt
+smarthome_vision/msg/__init__.py
+smarthome_vision/msg/_detected_target.py

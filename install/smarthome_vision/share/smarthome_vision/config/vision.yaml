@@ -1,13 +1,13 @@
 smarthome_vision_node:
   ros__parameters:
-    image_topic: /camera/image_raw
+    image_topic: /image_raw
     serial_device: /dev/gimbal
     baudrate: 115200
 
     input_width: 640
     input_height: 640
-    conf_threshold: 0.1
-    score_threshold: 0.1
+    conf_threshold: 0.25
+    score_threshold: 0.5
     show_debug: true
     use_cuda_preprocess: true
 
@@ -28,4 +28,7 @@ smarthome_vision_node:
 
     class_names: [0, 1, 2, 3]
 
-    class_sizes: [0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06, 0.06]
+    class_sizes: [0.06, 0.06,
+                  0.06, 0.06,
+                  0.06, 0.06,
+                  0.06, 0.06]

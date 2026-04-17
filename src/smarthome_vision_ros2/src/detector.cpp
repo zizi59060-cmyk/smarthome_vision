@@ -60,24 +60,11 @@ std::array<cv::Point2f, 4> Detector::bbox_to_corners(const cv::Rect2f & box)
   };
 }
 
+// 语义关键点模型：固定输出顺序就是 TL, TR, BR, BL
+// 因此这里不再做几何重排，直接原样返回
 std::array<cv::Point2f, 4> Detector::reorder_corners(const std::array<cv::Point2f, 4> & pts)
 {
-  std::vector<cv::Point2f> v(pts.begin(), pts.end());
-  std::sort(v.begin(), v.end(), [](const cv::Point2f & a, const cv::Point2f & b) {
-    return a.y < b.y;
-  });
-
-  std::vector<cv::Point2f> top = {v[0], v[1]};
-  std::vector<cv::Point2f> bottom = {v[2], v[3]};
-
-  std::sort(top.begin(), top.end(), [](const cv::Point2f & a, const cv::Point2f & b) {
-    return a.x < b.x;
-  });
-  std::sort(bottom.begin(), bottom.end(), [](const cv::Point2f & a, const cv::Point2f & b) {
-    return a.x < b.x;
-  });
-
-  return {top[0], top[1], bottom[1], bottom[0]};
+  return pts;
 }
 
 bool Detector::keypoints_valid(
@@ -138,7 +125,9 @@ std::vector<Detection> Detector::infer(const cv::Mat & image)
     if (!force_bbox_only_ &&
         pred.has_keypoints &&
         keypoints_valid(pred.keypoints, pred.bbox, image.cols, image.rows)) {
-      det.corners = reorder_corners(pred.keypoints);
+      // 关键修改：
+      // 网络输出语义已经固定为 TL, TR, BR, BL，不能再做几何重排
+      det.corners = pred.keypoints;
       det.corner_source = CornerSource::KEYPOINT;
     } else if (enable_bbox_fallback_) {
       det.corners = bbox_to_corners(pred.bbox);

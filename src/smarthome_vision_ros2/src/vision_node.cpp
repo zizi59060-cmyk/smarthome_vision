@@ -42,15 +42,14 @@ void drawDetectionDebug(cv::Mat & image, const Detection & det)
 {
   const cv::Scalar bbox_color = colorForClass(det.class_id);
 
-  // 1) 画 bbox
   if (det.has_bbox) {
     cv::rectangle(image, det.bbox, bbox_color, 2);
   }
 
-  // 2) 画标签（类别和置信度）
   std::ostringstream oss;
   oss << "ID:" << det.class_id
-      << " Conf:" << std::fixed << std::setprecision(2) << det.score;
+      << " Conf:" << std::fixed << std::setprecision(2) << det.score
+      << " Src:" << (det.corner_source == CornerSource::KEYPOINT ? "KP" : "BBOX");
 
   const std::string label = oss.str();
 
@@ -76,18 +75,25 @@ void drawDetectionDebug(cv::Mat & image, const Detection & det)
     cv::Scalar(255, 255, 255),
     1);
 
-  // 3) 画 4 个关键点
+  static const std::array<std::string, 4> names = {"P0(TL)", "P1(TR)", "P2(BR)", "P3(BL)"};
+
   for (int i = 0; i < 4; ++i) {
     const cv::Point2f & p = det.corners[i];
     cv::circle(image, p, 5, cv::Scalar(0, 0, 255), -1);
     cv::putText(
       image,
-      "P" + std::to_string(i),
+      names[i],
       cv::Point(static_cast<int>(p.x) + 6, static_cast<int>(p.y) - 6),
       cv::FONT_HERSHEY_SIMPLEX,
       0.5,
       cv::Scalar(0, 0, 255),
       2);
+  }
+
+  for (int i = 0; i < 4; ++i) {
+    const cv::Point2f & p1 = det.corners[i];
+    const cv::Point2f & p2 = det.corners[(i + 1) % 4];
+    cv::line(image, p1, p2, cv::Scalar(0, 255, 255), 2);
   }
 }
 
@@ -102,19 +108,16 @@ void drawPoseInsideBox(
 
   const int x = std::max(0, static_cast<int>(det.bbox.x));
   const int y = std::max(0, static_cast<int>(det.bbox.y));
-  const int w = std::max(1, static_cast<int>(det.bbox.width));
-  const int h = std::max(1, static_cast<int>(det.bbox.height));
 
-  // 字体参数
   const double font_scale = 0.45;
   const int thickness = 1;
   const int line_gap = 4;
   const int padding = 4;
 
   std::ostringstream sx, sy, sz;
-  sx << "X=" << std::fixed << std::setprecision(2) << pose.tvec[0];
-  sy << "Y=" << std::fixed << std::setprecision(2) << pose.tvec[1];
-  sz << "Z=" << std::fixed << std::setprecision(2) << pose.tvec[2];
+  sx << "X=" << std::fixed << std::setprecision(3) << pose.tvec[0];
+  sy << "Y=" << std::fixed << std::setprecision(3) << pose.tvec[1];
+  sz << "Z=" << std::fixed << std::setprecision(3) << pose.tvec[2];
 
   const std::string line1 = sx.str();
   const std::string line2 = sy.str();
@@ -130,11 +133,9 @@ void drawPoseInsideBox(
   const int box_h = padding * 2 + line_h * 3 + line_gap * 2;
   const int box_w = padding * 2 + text_w;
 
-  // 尽量放在 bbox 内左上角
   int bx = x + 2;
   int by = y + 2;
 
-  // 如果 bbox 太小，仍然限制在图像内
   bx = std::min(std::max(0, bx), std::max(0, image.cols - box_w - 1));
   by = std::min(std::max(0, by), std::max(0, image.rows - box_h - 1));
 
@@ -181,7 +182,7 @@ class VisionNode : public rclcpp::Node
 public:
   VisionNode() : Node("smarthome_vision_node")
   {
-    declare_parameter<std::string>("image_topic", "/camera/image_raw");
+    declare_parameter<std::string>("image_topic", "/image_raw");
     declare_parameter<std::string>("serial_device", "/dev/gimbal");
     declare_parameter<int>("baudrate", 115200);
     declare_parameter<int>("input_width", 640);
@@ -251,15 +252,23 @@ public:
       get_parameter("baudrate").as_int());
 
     pub_ = create_publisher<smarthome_vision::msg::DetectedTarget>("detected_target", 10);
-    debug_img_pub_ = create_publisher<sensor_msgs::msg::Image>("vision/debug_image", 10);
 
     sub_ = create_subscription<sensor_msgs::msg::Image>(
       get_parameter("image_topic").as_string(), 10,
       std::bind(&VisionNode::imageCallback, this, _1));
 
-    RCLCPP_INFO(
-      this->get_logger(),
-      "Vision Node started. Publishing debug images to /vision/debug_image");
+    if (show_debug_) {
+      cv::namedWindow("smarthome_vision_debug", cv::WINDOW_NORMAL);
+    }
+
+    RCLCPP_INFO(this->get_logger(), "Vision Node started.");
+  }
+
+  ~VisionNode()
+  {
+    if (show_debug_) {
+      cv::destroyWindow("smarthome_vision_debug");
+    }
   }
 
 private:
@@ -330,20 +339,29 @@ private:
         drawDetectionDebug(vis, det);
       }
 
-      // 只把最佳目标的 XYZ 画到它自己的 bbox 内
       if (found) {
         drawPoseInsideBox(vis, best_det, best_pose);
       }
 
-      auto debug_msg = cv_bridge::CvImage(msg->header, "bgr8", vis).toImageMsg();
-      debug_img_pub_->publish(*debug_msg);
+      const int scale = 2;
+      cv::Mat vis_big;
+      cv::resize(
+        vis,
+        vis_big,
+        cv::Size(vis.cols * scale, vis.rows * scale),
+        0,
+        0,
+        cv::INTER_NEAREST);
+
+      cv::resizeWindow("smarthome_vision_debug", vis_big.cols, vis_big.rows);
+      cv::imshow("smarthome_vision_debug", vis_big);
+      cv::waitKey(1);
     }
   }
 
 private:
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sub_;
   rclcpp::Publisher<smarthome_vision::msg::DetectedTarget>::SharedPtr pub_;
-  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr debug_img_pub_;
 
   std::unique_ptr<Detector> detector_;
   std::unique_ptr<PoseSolver> pose_solver_;
