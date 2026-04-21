@@ -36,6 +36,13 @@ inline void to_flow_style_yaml(
     out << ", ";
   }
 
+  // member: mode
+  {
+    out << "mode: ";
+    rosidl_generator_traits::value_to_yaml(msg.mode, out);
+    out << ", ";
+  }
+
   // member: tracking
   {
     out << "tracking: ";
@@ -108,6 +115,16 @@ inline void to_block_style_yaml(
     }
     out << "stamp:\n";
     to_block_style_yaml(msg.stamp, out, indentation + 2);
+  }
+
+  // member: mode
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "mode: ";
+    rosidl_generator_traits::value_to_yaml(msg.mode, out);
+    out << "\n";
   }
 
   // member: tracking

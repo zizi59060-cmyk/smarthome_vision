@@ -80,6 +80,11 @@ static bool _DetectedTarget__cdr_serialize(
     }
   }
 
+  // Field name: mode
+  {
+    cdr << ros_message->mode;
+  }
+
   // Field name: tracking
   {
     cdr << (ros_message->tracking ? true : false);
@@ -142,6 +147,11 @@ static bool _DetectedTarget__cdr_deserialize(
     {
       return false;
     }
+  }
+
+  // Field name: mode
+  {
+    cdr >> ros_message->mode;
   }
 
   // Field name: tracking
@@ -223,6 +233,12 @@ size_t get_serialized_size_smarthome_vision__msg__DetectedTarget(
 
   current_alignment += get_serialized_size_builtin_interfaces__msg__Time(
     &(ros_message->stamp), current_alignment);
+  // field.name mode
+  {
+    size_t item_size = sizeof(ros_message->mode);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // field.name tracking
   {
     size_t item_size = sizeof(ros_message->tracking);
@@ -317,6 +333,13 @@ size_t max_serialized_size_smarthome_vision__msg__DetectedTarget(
       full_bounded &= inner_full_bounded;
       is_plain &= inner_is_plain;
     }
+  }
+  // member: mode
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint8_t);
+    current_alignment += array_size * sizeof(uint8_t);
   }
   // member: tracking
   {

@@ -68,6 +68,15 @@ bool smarthome_vision__msg__detected_target__convert_from_py(PyObject * _pymsg, 
     }
     Py_DECREF(field);
   }
+  {  // mode
+    PyObject * field = PyObject_GetAttrString(_pymsg, "mode");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->mode = (uint8_t)PyLong_AsUnsignedLong(field);
+    Py_DECREF(field);
+  }
   {  // tracking
     PyObject * field = PyObject_GetAttrString(_pymsg, "tracking");
     if (!field) {
@@ -214,6 +223,17 @@ PyObject * smarthome_vision__msg__detected_target__convert_to_py(void * raw_ros_
     }
     {
       int rc = PyObject_SetAttrString(_pymessage, "stamp", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // mode
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->mode);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "mode", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -28,6 +28,7 @@ smarthome_vision__msg__DetectedTarget__init(smarthome_vision__msg__DetectedTarge
     smarthome_vision__msg__DetectedTarget__fini(msg);
     return false;
   }
+  // mode
   // tracking
   // class_id
   // score
@@ -50,6 +51,7 @@ smarthome_vision__msg__DetectedTarget__fini(smarthome_vision__msg__DetectedTarge
   }
   // stamp
   builtin_interfaces__msg__Time__fini(&msg->stamp);
+  // mode
   // tracking
   // class_id
   // score
@@ -70,6 +72,10 @@ smarthome_vision__msg__DetectedTarget__are_equal(const smarthome_vision__msg__De
   if (!builtin_interfaces__msg__Time__are_equal(
       &(lhs->stamp), &(rhs->stamp)))
   {
+    return false;
+  }
+  // mode
+  if (lhs->mode != rhs->mode) {
     return false;
   }
   // tracking
@@ -119,6 +125,8 @@ smarthome_vision__msg__DetectedTarget__copy(
   {
     return false;
   }
+  // mode
+  output->mode = input->mode;
   // tracking
   output->tracking = input->tracking;
   // class_id

@@ -60,6 +60,8 @@ cdr_serialize(
   builtin_interfaces::msg::typesupport_fastrtps_cpp::cdr_serialize(
     ros_message.stamp,
     cdr);
+  // Member: mode
+  cdr << ros_message.mode;
   // Member: tracking
   cdr << (ros_message.tracking ? true : false);
   // Member: class_id
@@ -88,6 +90,9 @@ cdr_deserialize(
   // Member: stamp
   builtin_interfaces::msg::typesupport_fastrtps_cpp::cdr_deserialize(
     cdr, ros_message.stamp);
+
+  // Member: mode
+  cdr >> ros_message.mode;
 
   // Member: tracking
   {
@@ -137,6 +142,12 @@ get_serialized_size(
   current_alignment +=
     builtin_interfaces::msg::typesupport_fastrtps_cpp::get_serialized_size(
     ros_message.stamp, current_alignment);
+  // Member: mode
+  {
+    size_t item_size = sizeof(ros_message.mode);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
   // Member: tracking
   {
     size_t item_size = sizeof(ros_message.tracking);
@@ -224,6 +235,14 @@ max_serialized_size_DetectedTarget(
       full_bounded &= inner_full_bounded;
       is_plain &= inner_is_plain;
     }
+  }
+
+  // Member: mode
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint8_t);
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   // Member: tracking

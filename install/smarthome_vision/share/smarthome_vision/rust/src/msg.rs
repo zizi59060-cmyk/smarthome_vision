@@ -19,6 +19,11 @@ pub struct DetectedTarget {
 
     // This member is not documented.
     #[allow(missing_docs)]
+    pub mode: u8,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
     pub tracking: bool,
 
 
@@ -68,6 +73,7 @@ impl rosidl_runtime_rs::Message for DetectedTarget {
     match msg_cow {
       std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         stamp: builtin_interfaces::msg::Time::into_rmw_message(std::borrow::Cow::Owned(msg.stamp)).into_owned(),
+        mode: msg.mode,
         tracking: msg.tracking,
         class_id: msg.class_id,
         score: msg.score,
@@ -78,6 +84,7 @@ impl rosidl_runtime_rs::Message for DetectedTarget {
       }),
       std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
         stamp: builtin_interfaces::msg::Time::into_rmw_message(std::borrow::Cow::Borrowed(&msg.stamp)).into_owned(),
+      mode: msg.mode,
       tracking: msg.tracking,
       class_id: msg.class_id,
       score: msg.score,
@@ -92,6 +99,7 @@ impl rosidl_runtime_rs::Message for DetectedTarget {
   fn from_rmw_message(msg: Self::RmwMsg) -> Self {
     Self {
       stamp: builtin_interfaces::msg::Time::from_rmw_message(msg.stamp),
+      mode: msg.mode,
       tracking: msg.tracking,
       class_id: msg.class_id,
       score: msg.score,

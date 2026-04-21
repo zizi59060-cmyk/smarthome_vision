@@ -82,7 +82,7 @@ void resize_function__DetectedTarget__corners_uv(void * untyped_member, size_t s
   member->resize(size);
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember DetectedTarget_message_member_array[8] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember DetectedTarget_message_member_array[9] = {
   {
     "stamp",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
@@ -92,6 +92,23 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember DetectedTarge
     0,  // array size
     false,  // is upper bound
     offsetof(smarthome_vision::msg::DetectedTarget, stamp),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "mode",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(smarthome_vision::msg::DetectedTarget, mode),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -224,7 +241,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember DetectedTarge
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers DetectedTarget_message_members = {
   "smarthome_vision::msg",  // message namespace
   "DetectedTarget",  // message name
-  8,  // number of fields
+  9,  // number of fields
   sizeof(smarthome_vision::msg::DetectedTarget),
   DetectedTarget_message_member_array,  // message members
   DetectedTarget_init_function,  // function to initialize message memory (memory has to be allocated)

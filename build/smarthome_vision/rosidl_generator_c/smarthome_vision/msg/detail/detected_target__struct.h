@@ -27,6 +27,7 @@ extern "C"
 typedef struct smarthome_vision__msg__DetectedTarget
 {
   builtin_interfaces__msg__Time stamp;
+  uint8_t mode;
   bool tracking;
   int32_t class_id;
   float score;

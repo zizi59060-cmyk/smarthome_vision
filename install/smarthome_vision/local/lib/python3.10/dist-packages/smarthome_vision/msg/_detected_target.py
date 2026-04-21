@@ -65,6 +65,7 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
 
     __slots__ = [
         '_stamp',
+        '_mode',
         '_tracking',
         '_class_id',
         '_score',
@@ -76,6 +77,7 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
 
     _fields_and_field_types = {
         'stamp': 'builtin_interfaces/Time',
+        'mode': 'uint8',
         'tracking': 'boolean',
         'class_id': 'int32',
         'score': 'float',
@@ -87,6 +89,7 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
 
     SLOT_TYPES = (
         rosidl_parser.definition.NamespacedType(['builtin_interfaces', 'msg'], 'Time'),  # noqa: E501
+        rosidl_parser.definition.BasicType('uint8'),  # noqa: E501
         rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -102,6 +105,7 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         from builtin_interfaces.msg import Time
         self.stamp = kwargs.get('stamp', Time())
+        self.mode = kwargs.get('mode', int())
         self.tracking = kwargs.get('tracking', bool())
         self.class_id = kwargs.get('class_id', int())
         self.score = kwargs.get('score', float())
@@ -141,6 +145,8 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
             return False
         if self.stamp != other.stamp:
             return False
+        if self.mode != other.mode:
+            return False
         if self.tracking != other.tracking:
             return False
         if self.class_id != other.class_id:
@@ -175,6 +181,21 @@ class DetectedTarget(metaclass=Metaclass_DetectedTarget):
                 isinstance(value, Time), \
                 "The 'stamp' field must be a sub message of type 'Time'"
         self._stamp = value
+
+    @builtins.property
+    def mode(self):
+        """Message field 'mode'."""
+        return self._mode
+
+    @mode.setter
+    def mode(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'mode' field must be of type 'int'"
+            assert value >= 0 and value < 256, \
+                "The 'mode' field must be an unsigned integer in [0, 255]"
+        self._mode = value
 
     @builtins.property
     def tracking(self):

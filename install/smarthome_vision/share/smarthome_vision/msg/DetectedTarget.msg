@@ -1,4 +1,5 @@
 builtin_interfaces/Time stamp
+uint8 mode
 bool tracking
 int32 class_id
 float32 score

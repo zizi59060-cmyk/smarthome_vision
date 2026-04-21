@@ -1,0 +1,238 @@
+[0.015s] Invoking command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2 -DCMAKE_INSTALL_PREFIX=/home/nvidia4/smarthome_2026/ws/install/smarthome_vision
+[0.142s] -- The C compiler identification is GNU 11.4.0
+[0.280s] -- The CXX compiler identification is GNU 11.4.0
+[0.297s] -- Detecting C compiler ABI info
+[0.480s] -- Detecting C compiler ABI info - done
+[0.498s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.498s] -- Detecting C compile features
+[0.498s] -- Detecting C compile features - done
+[0.499s] -- Detecting CXX compiler ABI info
+[0.663s] -- Detecting CXX compiler ABI info - done
+[0.675s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.675s] -- Detecting CXX compile features
+[0.675s] -- Detecting CXX compile features - done
+[0.680s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.031s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.236s] -- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+[1.309s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.318s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.332s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.359s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.380s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.453s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.456s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.630s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.695s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.778s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.792s] -- Looking for pthread.h
+[1.943s] -- Looking for pthread.h - found
+[1.943s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.150s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.151s] -- Found Threads: TRUE  
+[2.249s] -- Found sensor_msgs: 4.9.1 (/opt/ros/humble/share/sensor_msgs/cmake)
+[2.297s] -- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+[2.377s] -- Found CUDA: /usr/local/cuda (found suitable exact version "12.6") 
+[2.400s] -- Found image_transport: 3.1.12 (/opt/ros/humble/share/image_transport/cmake)
+[2.464s] -- Found camera_info_manager: 3.1.12 (/opt/ros/humble/share/camera_info_manager/cmake)
+[2.476s] -- Found OpenCV: /usr/local (found version "4.10.0") found components: core imgproc highgui cudaarithm cudaimgproc cudawarping 
+[2.478s] -- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[2.541s] -- Found CUDAToolkit: /usr/local/cuda/include (found version "12.6.68") 
+[3.366s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[4.171s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.469s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.517s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[4.532s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[4.599s] -- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[4.599s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[4.600s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[4.600s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+[4.644s] -- Found PythonExtra: .so  
+[5.024s] -- Configuring done
+[5.175s] -- Generating done
+[5.211s] -- Build files have been written to: /home/nvidia4/smarthome_2026/ws/build/smarthome_vision
+[5.269s] Invoked command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2 -DCMAKE_INSTALL_PREFIX=/home/nvidia4/smarthome_2026/ws/install/smarthome_vision
+[5.270s] Invoking command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia4/smarthome_2026/ws/build/smarthome_vision -- -j8 -l8
+[5.380s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision_core[0m
+[5.393s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_generator_c[0m
+[5.426s] [  2%] Built target smarthome_vision__rs
+[5.432s] [  5%] Built target smarthome_vision__cpp
+[5.452s] [  5%] Built target ament_cmake_python_copy_smarthome_vision
+[5.453s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_fastrtps_cpp[0m
+[5.457s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_cpp[0m
+[5.460s] [ 22%] Built target smarthome_vision__rosidl_generator_c
+[5.461s] [ 27%] Built target smarthome_vision_core
+[5.487s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_introspection_cpp[0m
+[5.503s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_c[0m
+[5.503s] [ 35%] Built target smarthome_vision__rosidl_typesupport_fastrtps_cpp
+[5.507s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_introspection_c[0m
+[5.509s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_fastrtps_c[0m
+[5.516s] [ 42%] Built target smarthome_vision__rosidl_typesupport_cpp
+[5.532s] [ 50%] Built target smarthome_vision__rosidl_typesupport_c
+[5.535s] [ 57%] Built target smarthome_vision__rosidl_typesupport_introspection_c
+[5.552s] [35m[1mConsolidate compiler generated dependencies of target vision_node[0m
+[5.570s] [ 65%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c
+[5.574s] [ 72%] Built target smarthome_vision__rosidl_typesupport_introspection_cpp
+[5.620s] [ 77%] Built target vision_node
+[5.646s] [ 77%] Built target smarthome_vision
+[5.707s] [ 80%] Built target smarthome_vision__py
+[5.734s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_generator_py[0m
+[5.767s] [ 85%] Built target smarthome_vision__rosidl_generator_py
+[5.788s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_introspection_c__pyext[0m
+[5.790s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_fastrtps_c__pyext[0m
+[5.813s] [35m[1mConsolidate compiler generated dependencies of target smarthome_vision__rosidl_typesupport_c__pyext[0m
+[5.845s] [ 90%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c__pyext
+[5.858s] [ 95%] Built target smarthome_vision__rosidl_typesupport_c__pyext
+[5.859s] [100%] Built target smarthome_vision__rosidl_typesupport_introspection_c__pyext
+[5.947s] running egg_info
+[5.950s] writing smarthome_vision.egg-info/PKG-INFO
+[5.950s] writing dependency_links to smarthome_vision.egg-info/dependency_links.txt
+[5.951s] writing top-level names to smarthome_vision.egg-info/top_level.txt
+[5.956s] reading manifest file 'smarthome_vision.egg-info/SOURCES.txt'
+[5.957s] writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'
+[6.068s] [100%] Built target ament_cmake_python_build_smarthome_vision_egg
+[6.102s] Invoked command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia4/smarthome_2026/ws/build/smarthome_vision -- -j8 -l8
+[6.133s] Invoking command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia4/smarthome_2026/ws/build/smarthome_vision
+[6.150s] -- Install configuration: ""
+[6.150s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/rosidl_interfaces/smarthome_vision
+[6.150s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.151s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.151s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_generator_c__visibility_control.h
+[6.151s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.151s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__struct.h
+[6.151s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.h
+[6.153s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__functions.h
+[6.153s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__functions.c
+[6.153s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detected_target.h
+[6.153s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/library_path.sh
+[6.153s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/library_path.dsv
+[6.153s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_c.so
+[6.154s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.156s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.157s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.157s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_fastrtps_c.h
+[6.157s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[6.157s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_c.so
+[6.157s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.158s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.158s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.158s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__struct.hpp
+[6.158s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.hpp
+[6.164s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__traits.hpp
+[6.165s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__builder.hpp
+[6.165s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detected_target.hpp
+[6.165s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_generator_cpp__visibility_control.hpp
+[6.165s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.166s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.166s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.166s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_fastrtps_cpp.hpp
+[6.166s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/dds_fastrtps
+[6.167s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[6.167s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so
+[6.167s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.167s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.167s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_introspection_c.h
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.c
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_c.so
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_c.so
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision
+[6.168s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_introspection_cpp.hpp
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.cpp
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_cpp.so
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_cpp.so
+[6.169s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/pythonpath.sh
+[6.170s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/pythonpath.dsv
+[6.170s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info
+[6.170s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/PKG-INFO
+[6.170s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/top_level.txt
+[6.170s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/SOURCES.txt
+[6.170s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/dependency_links.txt
+[6.170s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision
+[6.170s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[6.170s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/_detected_target.py
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/__init__.py
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/_detected_target_s.c
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_c.c
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/libsmarthome_vision__rosidl_generator_py.so
+[6.171s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_fastrtps_c.c
+[6.172s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/__init__.py
+[6.172s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_introspection_c.c
+[6.238s] Listing '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision'...
+[6.238s] Compiling '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/__init__.py'...
+[6.238s] Listing '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg'...
+[6.258s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[6.258s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[6.258s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[6.258s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_py.so
+[6.259s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/rust_packages/smarthome_vision
+[6.259s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust
+[6.259s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/build.rs
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/lib.rs
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/msg
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/msg/rmw.rs
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/msg.rs
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/Cargo.toml
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/msg/DetectedTarget.idl
+[6.260s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/msg/DetectedTarget.msg
+[6.261s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision_core.so
+[6.261s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/smarthome_vision/vision_node
+[6.261s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/
+[6.261s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision
+[6.261s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/gimbal_bridge.hpp
+[6.262s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/detector.hpp
+[6.262s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/trt_detector.hpp
+[6.262s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/crc16.hpp
+[6.262s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/types.hpp
+[6.262s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/pose_solver.hpp
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/protocol.hpp
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/launch
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/launch/vision.launch.py
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/config
+[6.263s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/config/vision.yaml
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/package_run_dependencies/smarthome_vision
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/parent_prefix_path/smarthome_vision
+[6.263s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/ament_prefix_path.sh
+[6.264s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/ament_prefix_path.dsv
+[6.264s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/path.sh
+[6.264s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/path.dsv
+[6.264s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.bash
+[6.264s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.sh
+[6.264s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.zsh
+[6.264s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.dsv
+[6.265s] -- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/package.dsv
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/packages/smarthome_vision
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cExport.cmake
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cExport-noconfig.cmake
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cExport.cmake
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[6.265s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cppExport.cmake
+[6.266s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cppExport.cmake
+[6.266s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[6.266s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cExport.cmake
+[6.266s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[6.266s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cExport.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cExport-noconfig.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cppExport.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cppExport.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cppExport-noconfig.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_pyExport.cmake
+[6.267s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_pyExport-noconfig.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_dependencies-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_include_directories-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_libraries-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_targets-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[6.268s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[6.269s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_visionConfig.cmake
+[6.269s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_visionConfig-version.cmake
+[6.269s] -- Up-to-date: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/package.xml
+[6.289s] Invoked command in '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia4/smarthome_2026/ws/build/smarthome_vision

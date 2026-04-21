@@ -5,9 +5,12 @@
 #include <array>
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
+#include <chrono>
 
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
+#include <builtin_interfaces/msg/time.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 
@@ -16,6 +19,7 @@
 #include "smarthome_vision/gimbal_bridge.hpp"
 #include "smarthome_vision/pose_solver.hpp"
 #include "smarthome_vision/types.hpp"
+#include "smarthome_vision/protocol.hpp"
 
 using std::placeholders::_1;
 
@@ -27,18 +31,69 @@ namespace
 
 cv::Scalar colorForClass(int class_id)
 {
-  static const std::array<cv::Scalar, 6> colors = {
+  static const std::array<cv::Scalar, 8> colors = {
     cv::Scalar(255, 0, 0),
     cv::Scalar(0, 255, 0),
     cv::Scalar(0, 255, 255),
     cv::Scalar(255, 0, 255),
     cv::Scalar(255, 255, 0),
-    cv::Scalar(0, 128, 255)
+    cv::Scalar(0, 128, 255),
+    cv::Scalar(128, 0, 255),
+    cv::Scalar(255, 128, 0)
   };
   return colors[static_cast<size_t>(std::abs(class_id)) % colors.size()];
 }
 
-void drawDetectionDebug(cv::Mat & image, const Detection & det)
+std::string modeToString(uint8_t mode)
+{
+  switch (static_cast<VisionMode>(mode)) {
+    case VisionMode::IDLE:
+      return "IDLE";
+    case VisionMode::DETECT_OBJECT:
+      return "OBJECT";
+    case VisionMode::DETECT_QR:
+      return "QR";
+    default:
+      return "UNKNOWN";
+  }
+}
+
+int remapClassId(int raw_id, const std::vector<int> & mapping)
+{
+  if (raw_id >= 0 && static_cast<size_t>(raw_id) < mapping.size()) {
+    return mapping[static_cast<size_t>(raw_id)];
+  }
+  return raw_id;
+}
+
+std::map<int, cv::Size2f> buildSizeMap(
+  const std::vector<int> & class_ids,
+  const std::vector<double> & class_sizes)
+{
+  std::map<int, cv::Size2f> out;
+  for (size_t i = 0; i < class_ids.size(); ++i) {
+    const size_t idx = i * 2;
+    if (idx + 1 < class_sizes.size()) {
+      out[class_ids[i]] = cv::Size2f(
+        static_cast<float>(class_sizes[idx]),
+        static_cast<float>(class_sizes[idx + 1]));
+    }
+  }
+  return out;
+}
+
+std::map<int, cv::Size2f> buildSquareSizeMap(
+  const std::vector<int> & class_ids,
+  float side_len)
+{
+  std::map<int, cv::Size2f> out;
+  for (const int id : class_ids) {
+    out[id] = cv::Size2f(side_len, side_len);
+  }
+  return out;
+}
+
+void drawDetectionDebug(cv::Mat & image, const Detection & det, const std::string & prefix)
 {
   const cv::Scalar bbox_color = colorForClass(det.class_id);
 
@@ -47,9 +102,9 @@ void drawDetectionDebug(cv::Mat & image, const Detection & det)
   }
 
   std::ostringstream oss;
-  oss << "ID:" << det.class_id
-      << " Conf:" << std::fixed << std::setprecision(2) << det.score
-      << " Src:" << (det.corner_source == CornerSource::KEYPOINT ? "KP" : "BBOX");
+  oss << prefix
+      << " ID:" << det.class_id
+      << " Conf:" << std::fixed << std::setprecision(2) << det.score;
 
   const std::string label = oss.str();
 
@@ -75,7 +130,7 @@ void drawDetectionDebug(cv::Mat & image, const Detection & det)
     cv::Scalar(255, 255, 255),
     1);
 
-  static const std::array<std::string, 4> names = {"P0(TL)", "P1(TR)", "P2(BR)", "P3(BL)"};
+  static const std::array<std::string, 4> names = {"TL", "TR", "BR", "BL"};
 
   for (int i = 0; i < 4; ++i) {
     const cv::Point2f & p = det.corners[i];
@@ -175,6 +230,84 @@ void drawPoseInsideBox(
     cv::Scalar(255, 255, 0), thickness);
 }
 
+void drawModeBanner(
+  cv::Mat & image,
+  uint8_t mode,
+  bool tracking,
+  bool use_test_mode,
+  bool use_local_camera)
+{
+  std::ostringstream oss;
+  oss << "MODE: " << modeToString(mode)
+      << " | TRACK: " << (tracking ? "YES" : "NO")
+      << " | MODE_SRC: " << (use_test_mode ? "TEST" : "SERIAL")
+      << " | IMG_SRC: " << (use_local_camera ? "LOCAL_CAM" : "ROS_TOPIC");
+
+  const std::string text = oss.str();
+
+  int baseline = 0;
+  const cv::Size text_size =
+    cv::getTextSize(text, cv::FONT_HERSHEY_SIMPLEX, 0.65, 2, &baseline);
+
+  const int x = 10;
+  const int y = 30;
+
+  cv::rectangle(
+    image,
+    cv::Rect(x - 6, y - text_size.height - 8, text_size.width + 12, text_size.height + 12),
+    cv::Scalar(0, 0, 0),
+    cv::FILLED);
+
+  cv::putText(
+    image,
+    text,
+    cv::Point(x, y),
+    cv::FONT_HERSHEY_SIMPLEX,
+    0.65,
+    cv::Scalar(0, 255, 0),
+    2);
+}
+
+struct BestTarget
+{
+  bool found = false;
+  Detection det;
+  PoseResult pose;
+};
+
+BestTarget pickBestTarget(
+  const cv::Mat & image,
+  Detector * detector,
+  const PoseSolver * pose_solver,
+  const std::vector<int> & class_mapping)
+{
+  BestTarget best;
+  if (detector == nullptr || pose_solver == nullptr) {
+    return best;
+  }
+
+  const std::vector<Detection> raw_dets = detector->infer(image);
+  float best_score = -1.0f;
+
+  for (auto det : raw_dets) {
+    det.class_id = remapClassId(det.class_id, class_mapping);
+
+    const PoseResult pose = pose_solver->solve(det);
+    if (!pose.success) {
+      continue;
+    }
+
+    if (det.score > best_score) {
+      best_score = det.score;
+      best.det = det;
+      best.pose = pose;
+      best.found = true;
+    }
+  }
+
+  return best;
+}
+
 }  // namespace
 
 class VisionNode : public rclcpp::Node
@@ -185,66 +318,98 @@ public:
     declare_parameter<std::string>("image_topic", "/image_raw");
     declare_parameter<std::string>("serial_device", "/dev/gimbal");
     declare_parameter<int>("baudrate", 115200);
-    declare_parameter<int>("input_width", 640);
-    declare_parameter<int>("input_height", 640);
-    declare_parameter<double>("conf_threshold", 0.25);
-    declare_parameter<double>("score_threshold", 0.25);
-    declare_parameter<bool>("show_debug", false);
+
+    declare_parameter<bool>("show_debug", true);
     declare_parameter<bool>("use_cuda_preprocess", true);
-    declare_parameter<std::string>("keypoint_engine_path", "");
-    declare_parameter<bool>("use_keypoint_detector", false);
-    declare_parameter<std::string>("bbox_engine_path", "");
-    declare_parameter<bool>("use_bbox_detector", true);
-    declare_parameter<bool>("enable_bbox_fallback", true);
-    declare_parameter<bool>("force_bbox_only", false);
+
+    declare_parameter<bool>("use_test_mode", false);
+    declare_parameter<int>("test_mode", 0);
+
+    declare_parameter<bool>("use_local_camera", true);
+    declare_parameter<int>("camera_device_id", 0);
+    declare_parameter<int>("camera_width", 640);
+    declare_parameter<int>("camera_height", 480);
+    declare_parameter<int>("camera_fps", 30);
+
+    declare_parameter<int>("object_input_width", 640);
+    declare_parameter<int>("object_input_height", 640);
+    declare_parameter<double>("object_conf_threshold", 0.25);
+    declare_parameter<double>("object_score_threshold", 0.25);
+    declare_parameter<std::string>("object_engine_path", "");
+
+    declare_parameter<int>("qr_input_width", 640);
+    declare_parameter<int>("qr_input_height", 640);
+    declare_parameter<double>("qr_conf_threshold", 0.25);
+    declare_parameter<double>("qr_score_threshold", 0.25);
+    declare_parameter<std::string>("qr_engine_path", "");
 
     declare_parameter<std::vector<double>>(
       "camera_matrix",
       {800.0, 0.0, 320.0, 0.0, 800.0, 240.0, 0.0, 0.0, 1.0});
     declare_parameter<std::vector<double>>("dist_coeffs", {0.0, 0.0, 0.0, 0.0, 0.0});
-    declare_parameter<std::vector<long int>>("class_names", {0, 1, 2, 3});
+
+    declare_parameter<std::vector<long int>>("class_names", std::vector<long int>{0, 1, 2, 3});
     declare_parameter<std::vector<double>>(
       "class_sizes",
-      {0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05});
+      std::vector<double>{0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05});
+
+    declare_parameter<std::vector<long int>>("object_model_class_ids", std::vector<long int>{0, 1, 2, 3});
+    declare_parameter<std::vector<long int>>("qr_model_class_ids", std::vector<long int>{0, 1, 2, 3});
+
+    declare_parameter<double>("qr_size", 0.05);
 
     show_debug_ = get_parameter("show_debug").as_bool();
+    use_local_camera_ = get_parameter("use_local_camera").as_bool();
+    camera_device_id_ = get_parameter("camera_device_id").as_int();
+    camera_width_ = get_parameter("camera_width").as_int();
+    camera_height_ = get_parameter("camera_height").as_int();
+    camera_fps_ = get_parameter("camera_fps").as_int();
 
     auto k = get_parameter("camera_matrix").as_double_array();
     auto d = get_parameter("dist_coeffs").as_double_array();
-    auto class_names = get_parameter("class_names").as_integer_array();
+    auto class_names_ll = get_parameter("class_names").as_integer_array();
     auto class_sizes = get_parameter("class_sizes").as_double_array();
+    auto obj_map_ll = get_parameter("object_model_class_ids").as_integer_array();
+    auto qr_map_ll = get_parameter("qr_model_class_ids").as_integer_array();
+
+    for (const auto v : class_names_ll) {
+      class_names_.push_back(static_cast<int>(v));
+    }
+    for (const auto v : obj_map_ll) {
+      object_model_class_ids_.push_back(static_cast<int>(v));
+    }
+    for (const auto v : qr_map_ll) {
+      qr_model_class_ids_.push_back(static_cast<int>(v));
+    }
 
     CameraIntrinsics cam;
     cam.camera_matrix =
       (cv::Mat_<double>(3, 3) << k[0], k[1], k[2], k[3], k[4], k[5], k[6], k[7], k[8]);
     cam.dist_coeffs = cv::Mat(d).clone().reshape(1, 1);
 
-    std::map<int, cv::Size2f> class_size_map;
-    for (size_t i = 0; i < class_names.size(); ++i) {
-      const size_t idx = i * 2;
-      if (idx + 1 < class_sizes.size()) {
-        class_size_map[static_cast<int>(class_names[i])] =
-          cv::Size2f(
-            static_cast<float>(class_sizes[idx]),
-            static_cast<float>(class_sizes[idx + 1]));
-      }
-    }
+    object_pose_solver_ = std::make_unique<PoseSolver>();
+    object_pose_solver_->set_camera(cam);
+    object_pose_solver_->set_class_size_map(buildSizeMap(class_names_, class_sizes));
 
-    pose_solver_ = std::make_unique<PoseSolver>();
-    pose_solver_->set_camera(cam);
-    pose_solver_->set_class_size_map(class_size_map);
+    const float qr_size = static_cast<float>(get_parameter("qr_size").as_double());
+    qr_pose_solver_ = std::make_unique<PoseSolver>();
+    qr_pose_solver_->set_camera(cam);
+    qr_pose_solver_->set_class_size_map(buildSquareSizeMap(qr_model_class_ids_, qr_size));
 
-    detector_ = std::make_unique<Detector>(
-      get_parameter("keypoint_engine_path").as_string(),
-      get_parameter("use_keypoint_detector").as_bool(),
-      get_parameter("bbox_engine_path").as_string(),
-      get_parameter("use_bbox_detector").as_bool(),
-      get_parameter("enable_bbox_fallback").as_bool(),
-      get_parameter("force_bbox_only").as_bool(),
-      get_parameter("input_width").as_int(),
-      get_parameter("input_height").as_int(),
-      static_cast<float>(get_parameter("conf_threshold").as_double()),
-      static_cast<float>(get_parameter("score_threshold").as_double()),
+    object_detector_ = std::make_unique<Detector>(
+      get_parameter("object_engine_path").as_string(),
+      get_parameter("object_input_width").as_int(),
+      get_parameter("object_input_height").as_int(),
+      static_cast<float>(get_parameter("object_conf_threshold").as_double()),
+      static_cast<float>(get_parameter("object_score_threshold").as_double()),
+      get_parameter("use_cuda_preprocess").as_bool());
+
+    qr_detector_ = std::make_unique<Detector>(
+      get_parameter("qr_engine_path").as_string(),
+      get_parameter("qr_input_width").as_int(),
+      get_parameter("qr_input_height").as_int(),
+      static_cast<float>(get_parameter("qr_conf_threshold").as_double()),
+      static_cast<float>(get_parameter("qr_score_threshold").as_double()),
       get_parameter("use_cuda_preprocess").as_bool());
 
     gimbal_ = std::make_unique<GimbalBridge>(
@@ -253,9 +418,36 @@ public:
 
     pub_ = create_publisher<smarthome_vision::msg::DetectedTarget>("detected_target", 10);
 
-    sub_ = create_subscription<sensor_msgs::msg::Image>(
-      get_parameter("image_topic").as_string(), 10,
-      std::bind(&VisionNode::imageCallback, this, _1));
+    if (!use_local_camera_) {
+      sub_ = create_subscription<sensor_msgs::msg::Image>(
+        get_parameter("image_topic").as_string(), 10,
+        std::bind(&VisionNode::imageCallback, this, _1));
+      RCLCPP_INFO(this->get_logger(), "Using ROS image topic input.");
+    } else {
+      if (!cap_.open(camera_device_id_)) {
+        throw std::runtime_error("failed to open local camera device");
+      }
+
+      if (camera_width_ > 0) {
+        cap_.set(cv::CAP_PROP_FRAME_WIDTH, camera_width_);
+      }
+      if (camera_height_ > 0) {
+        cap_.set(cv::CAP_PROP_FRAME_HEIGHT, camera_height_);
+      }
+      if (camera_fps_ > 0) {
+        cap_.set(cv::CAP_PROP_FPS, camera_fps_);
+      }
+
+      const int period_ms = camera_fps_ > 0 ? std::max(1, 1000 / camera_fps_) : 33;
+      timer_ = create_wall_timer(
+        std::chrono::milliseconds(period_ms),
+        std::bind(&VisionNode::cameraTimerCallback, this));
+
+      RCLCPP_INFO(
+        this->get_logger(),
+        "Using local camera device %d, requested %dx%d @ %d FPS.",
+        camera_device_id_, camera_width_, camera_height_, camera_fps_);
+    }
 
     if (show_debug_) {
       cv::namedWindow("smarthome_vision_debug", cv::WINDOW_NORMAL);
@@ -266,82 +458,130 @@ public:
 
   ~VisionNode()
   {
+    if (cap_.isOpened()) {
+      cap_.release();
+    }
     if (show_debug_) {
       cv::destroyWindow("smarthome_vision_debug");
     }
   }
 
 private:
-  void imageCallback(const sensor_msgs::msg::Image::SharedPtr msg)
+  uint8_t getCurrentMode()
   {
-    cv::Mat image;
-    try {
-      image = cv_bridge::toCvCopy(msg, "bgr8")->image;
-    } catch (const std::exception & e) {
-      RCLCPP_WARN(this->get_logger(), "cv_bridge error: %s", e.what());
+    const bool use_test_mode = get_parameter("use_test_mode").as_bool();
+    if (use_test_mode) {
+      return static_cast<uint8_t>(get_parameter("test_mode").as_int());
+    }
+
+    gimbal_->updateReceive();
+    return gimbal_->getMode();
+  }
+
+  builtin_interfaces::msg::Time nowAsBuiltinTime() const
+  {
+    return this->now();
+  }
+
+  void publishEmptyResult(const builtin_interfaces::msg::Time & stamp, uint8_t mode)
+  {
+    smarthome_vision::msg::DetectedTarget out;
+    out.stamp = stamp;
+    out.mode = mode;
+    out.tracking = false;
+    out.class_id = -1;
+    out.score = 0.0f;
+    out.x = 0.0f;
+    out.y = 0.0f;
+    out.z = 0.0f;
+    pub_->publish(out);
+
+    gimbal_->sendTarget(mode, false, 0, 0.0f, 0.0f, 0.0f);
+  }
+
+  void publishFoundResult(
+    const builtin_interfaces::msg::Time & stamp,
+    uint8_t mode,
+    const Detection & det,
+    const PoseResult & pose)
+  {
+    smarthome_vision::msg::DetectedTarget out;
+    out.stamp = stamp;
+    out.mode = mode;
+    out.tracking = true;
+    out.class_id = det.class_id;
+    out.score = det.score;
+    out.x = static_cast<float>(pose.tvec[0]);
+    out.y = static_cast<float>(pose.tvec[1]);
+    out.z = static_cast<float>(pose.tvec[2]);
+    out.corners_uv.resize(8);
+    for (int i = 0; i < 4; ++i) {
+      out.corners_uv[2 * i] = det.corners[i].x;
+      out.corners_uv[2 * i + 1] = det.corners[i].y;
+    }
+    pub_->publish(out);
+
+    gimbal_->sendTarget(
+      mode,
+      true,
+      static_cast<uint8_t>(std::max(0, det.class_id)),
+      out.x, out.y, out.z);
+  }
+
+  void processFrame(const cv::Mat & image, const builtin_interfaces::msg::Time & stamp)
+  {
+    const bool use_test_mode = get_parameter("use_test_mode").as_bool();
+    const uint8_t mode = getCurrentMode();
+
+    BestTarget best;
+
+    if (mode == static_cast<uint8_t>(VisionMode::IDLE)) {
+      publishEmptyResult(stamp, mode);
+
+      if (show_debug_) {
+        cv::Mat vis = image.clone();
+        drawModeBanner(vis, mode, false, use_test_mode, use_local_camera_);
+        cv::imshow("smarthome_vision_debug", vis);
+        cv::waitKey(1);
+      }
       return;
     }
 
-    auto dets = detector_->infer(image);
-
-    Detection best_det;
-    PoseResult best_pose;
-    bool found = false;
-    float best_score = -1.0f;
-
-    for (const auto & det : dets) {
-      auto pose = pose_solver_->solve(det);
-      if (!pose.success) {
-        continue;
-      }
-
-      if (det.score > best_score) {
-        best_score = det.score;
-        best_det = det;
-        best_pose = pose;
-        found = true;
-      }
-    }
-
-    smarthome_vision::msg::DetectedTarget out;
-    out.stamp = msg->header.stamp;
-
-    if (found) {
-      out.tracking = true;
-      out.class_id = best_det.class_id;
-      out.score = best_det.score;
-      out.x = static_cast<float>(best_pose.tvec[0]);
-      out.y = static_cast<float>(best_pose.tvec[1]);
-      out.z = static_cast<float>(best_pose.tvec[2]);
-
-      out.corners_uv.resize(8);
-      for (int i = 0; i < 4; ++i) {
-        out.corners_uv[2 * i] = best_det.corners[i].x;
-        out.corners_uv[2 * i + 1] = best_det.corners[i].y;
-      }
-
-      gimbal_->sendTarget(
-        true,
-        static_cast<uint8_t>(best_det.class_id),
-        out.x, out.y, out.z);
+    if (mode == static_cast<uint8_t>(VisionMode::DETECT_OBJECT)) {
+      best = pickBestTarget(
+        image,
+        object_detector_.get(),
+        object_pose_solver_.get(),
+        object_model_class_ids_);
+    } else if (mode == static_cast<uint8_t>(VisionMode::DETECT_QR)) {
+      best = pickBestTarget(
+        image,
+        qr_detector_.get(),
+        qr_pose_solver_.get(),
+        qr_model_class_ids_);
     } else {
-      out.tracking = false;
-      out.class_id = -1;
-      gimbal_->sendTarget(false, 0, 0.0f, 0.0f, 0.0f);
+      publishEmptyResult(stamp, static_cast<uint8_t>(VisionMode::IDLE));
+      return;
     }
 
-    pub_->publish(out);
+    if (best.found) {
+      publishFoundResult(stamp, mode, best.det, best.pose);
+    } else {
+      publishEmptyResult(stamp, mode);
+    }
 
     if (show_debug_) {
       cv::Mat vis = image.clone();
 
-      for (const auto & det : dets) {
-        drawDetectionDebug(vis, det);
+      if (best.found) {
+        drawDetectionDebug(
+          vis,
+          best.det,
+          mode == static_cast<uint8_t>(VisionMode::DETECT_OBJECT) ? "OBJ" : "QR");
+        drawPoseInsideBox(vis, best.det, best.pose);
       }
 
-      if (found) {
-        drawPoseInsideBox(vis, best_det, best_pose);
-      }
+      drawModeBanner(vis, mode, best.found, use_test_mode, use_local_camera_);
 
       const int scale = 2;
       cv::Mat vis_big;
@@ -359,14 +599,62 @@ private:
     }
   }
 
+  void imageCallback(const sensor_msgs::msg::Image::SharedPtr msg)
+  {
+    cv::Mat image;
+    try {
+      image = cv_bridge::toCvCopy(msg, "bgr8")->image;
+    } catch (const std::exception & e) {
+      RCLCPP_WARN(this->get_logger(), "cv_bridge error: %s", e.what());
+      return;
+    }
+
+    processFrame(image, msg->header.stamp);
+  }
+
+  void cameraTimerCallback()
+  {
+    if (!cap_.isOpened()) {
+      RCLCPP_WARN_THROTTLE(
+        this->get_logger(), *this->get_clock(), 2000,
+        "Local camera is not opened.");
+      return;
+    }
+
+    cv::Mat frame;
+    if (!cap_.read(frame) || frame.empty()) {
+      RCLCPP_WARN_THROTTLE(
+        this->get_logger(), *this->get_clock(), 2000,
+        "Failed to read frame from local camera.");
+      return;
+    }
+
+    processFrame(frame, nowAsBuiltinTime());
+  }
+
 private:
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sub_;
   rclcpp::Publisher<smarthome_vision::msg::DetectedTarget>::SharedPtr pub_;
+  rclcpp::TimerBase::SharedPtr timer_;
 
-  std::unique_ptr<Detector> detector_;
-  std::unique_ptr<PoseSolver> pose_solver_;
+  std::unique_ptr<Detector> object_detector_;
+  std::unique_ptr<Detector> qr_detector_;
+  std::unique_ptr<PoseSolver> object_pose_solver_;
+  std::unique_ptr<PoseSolver> qr_pose_solver_;
   std::unique_ptr<GimbalBridge> gimbal_;
-  bool show_debug_;
+
+  cv::VideoCapture cap_;
+
+  bool show_debug_ = true;
+  bool use_local_camera_ = true;
+  int camera_device_id_ = 0;
+  int camera_width_ = 640;
+  int camera_height_ = 480;
+  int camera_fps_ = 30;
+
+  std::vector<int> class_names_;
+  std::vector<int> object_model_class_ids_;
+  std::vector<int> qr_model_class_ids_;
 };
 
 }  // namespace smarthome_vision

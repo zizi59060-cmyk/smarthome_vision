@@ -33,6 +33,11 @@ pub struct DetectedTarget {
 
     // This member is not documented.
     #[allow(missing_docs)]
+    pub mode: u8,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
     pub tracking: bool,
 
 

@@ -94,7 +94,7 @@ bool smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__
   return rosidl_runtime_c__float__Sequence__init(member, size);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__DetectedTarget_message_member_array[8] = {
+static rosidl_typesupport_introspection_c__MessageMember smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__DetectedTarget_message_member_array[9] = {
   {
     "stamp",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
@@ -104,6 +104,23 @@ static rosidl_typesupport_introspection_c__MessageMember smarthome_vision__msg__
     0,  // array size
     false,  // is upper bound
     offsetof(smarthome_vision__msg__DetectedTarget, stamp),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "mode",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(smarthome_vision__msg__DetectedTarget, mode),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -236,7 +253,7 @@ static rosidl_typesupport_introspection_c__MessageMember smarthome_vision__msg__
 static const rosidl_typesupport_introspection_c__MessageMembers smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__DetectedTarget_message_members = {
   "smarthome_vision__msg",  // message namespace
   "DetectedTarget",  // message name
-  8,  // number of fields
+  9,  // number of fields
   sizeof(smarthome_vision__msg__DetectedTarget),
   smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__DetectedTarget_message_member_array,  // message members
   smarthome_vision__msg__DetectedTarget__rosidl_typesupport_introspection_c__DetectedTarget_init_function,  // function to initialize message memory (memory has to be allocated)

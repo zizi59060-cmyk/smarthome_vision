@@ -44,6 +44,7 @@ struct DetectedTarget_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->mode = 0;
       this->tracking = false;
       this->class_id = 0l;
       this->score = 0.0f;
@@ -59,6 +60,7 @@ struct DetectedTarget_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
+      this->mode = 0;
       this->tracking = false;
       this->class_id = 0l;
       this->score = 0.0f;
@@ -72,6 +74,9 @@ struct DetectedTarget_
   using _stamp_type =
     builtin_interfaces::msg::Time_<ContainerAllocator>;
   _stamp_type stamp;
+  using _mode_type =
+    uint8_t;
+  _mode_type mode;
   using _tracking_type =
     bool;
   _tracking_type tracking;
@@ -99,6 +104,12 @@ struct DetectedTarget_
     const builtin_interfaces::msg::Time_<ContainerAllocator> & _arg)
   {
     this->stamp = _arg;
+    return *this;
+  }
+  Type & set__mode(
+    const uint8_t & _arg)
+  {
+    this->mode = _arg;
     return *this;
   }
   Type & set__tracking(
@@ -187,6 +198,9 @@ struct DetectedTarget_
   bool operator==(const DetectedTarget_ & other) const
   {
     if (this->stamp != other.stamp) {
+      return false;
+    }
+    if (this->mode != other.mode) {
       return false;
     }
     if (this->tracking != other.tracking) {

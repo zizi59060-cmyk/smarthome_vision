@@ -228,6 +228,23 @@ CMakeFiles/vision_node.dir/src/vision_node.cpp.o: /home/nvidia4/smarthome_2026/w
   /usr/include/c++/11/bits/locale_facets_nonio.tcc \
   /usr/include/c++/11/bits/locale_conv.h \
   /usr/include/c++/11/bits/quoted_string.h \
+  /usr/include/c++/11/algorithm \
+  /usr/include/c++/11/bits/stl_algo.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/bits/parse_numbers.h \
   /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
   /usr/include/c++/11/csignal \
   /usr/include/signal.h \
@@ -282,16 +299,11 @@ CMakeFiles/vision_node.dir/src/vision_node.cpp.o: /home/nvidia4/smarthome_2026/w
   /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp \
   /usr/include/c++/11/future \
   /usr/include/c++/11/mutex \
-  /usr/include/c++/11/chrono \
-  /usr/include/c++/11/ratio \
-  /usr/include/c++/11/limits \
-  /usr/include/c++/11/bits/parse_numbers.h \
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/atomic \
   /usr/include/c++/11/bits/atomic_futex.h \
-  /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/bits/std_thread.h \
   /opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp \
   /usr/include/c++/11/set \
@@ -299,19 +311,7 @@ CMakeFiles/vision_node.dir/src/vision_node.cpp.o: /home/nvidia4/smarthome_2026/w
   /usr/include/c++/11/bits/stl_multiset.h \
   /usr/include/c++/11/thread \
   /usr/include/c++/11/bits/this_thread_sleep.h \
-  /usr/include/c++/11/unordered_map \
-  /usr/include/c++/11/bits/hashtable.h \
-  /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/bits/enable_special_members.h \
-  /usr/include/c++/11/bits/unordered_map.h \
   /opt/ros/humble/include/rclcpp/rclcpp/executor.hpp \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/bits/stl_algo.h \
-  /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/bits/stl_heap.h \
-  /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/11/functional \
   /usr/include/c++/11/cassert \
   /usr/include/assert.h \
   /usr/include/c++/11/iostream \
@@ -898,10 +898,13 @@ CMakeFiles/vision_node.dir/src/vision_node.cpp.o: /home/nvidia4/smarthome_2026/w
   /usr/local/cuda/include/vector_functions.hpp \
   /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/types.hpp \
   /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/gimbal_bridge.hpp \
+  /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/protocol.hpp \
   /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/pose_solver.hpp
 
 
 /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/pose_solver.hpp:
+
+/home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/protocol.hpp:
 
 /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/gimbal_bridge.hpp:
 
@@ -1351,46 +1354,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/iscanonical.h:
 
-/usr/local/include/opencv4/opencv2/flann/general.h:
-
-/usr/local/include/opencv4/opencv2/calib3d.hpp:
-
-/usr/include/aarch64-linux-gnu/sys/ucontext.h:
-
-/usr/include/aarch64-linux-gnu/bits/types/stack_t.h:
-
-/usr/include/linux/stddef.h:
-
-/usr/include/c++/11/bits/refwrap.h:
-
-/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/list_parameters.hpp:
-
-/usr/include/linux/posix_types.h:
-
-/usr/include/aarch64-linux-gnu/bits/posix1_lim.h:
-
-/opt/ros/humble/include/rcl/rcl/wait.h:
-
-/usr/include/asm-generic/bitsperlong.h:
-
-/usr/include/c++/11/bits/concept_check.h:
-
-/usr/include/asm-generic/types.h:
-
-/usr/include/aarch64-linux-gnu/asm/types.h:
-
-/usr/include/aarch64-linux-gnu/asm/sigcontext.h:
-
-/usr/include/aarch64-linux-gnu/bits/sigcontext.h:
-
-/usr/lib/gcc/aarch64-linux-gnu/11/include/stdint.h:
-
-/usr/include/aarch64-linux-gnu/bits/sigaction.h:
-
-/usr/include/aarch64-linux-gnu/bits/sigevent-consts.h:
-
-/usr/include/aarch64-linux-gnu/sys/select.h:
-
 /usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h:
 
 /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/bounded_vector.hpp:
@@ -1403,6 +1366,38 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/topic_statistics_state.hpp:
 
+/usr/include/c++/11/bits/unordered_map.h:
+
+/usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/11/bits/enable_special_members.h:
+
+/usr/include/c++/11/bits/basic_ios.tcc:
+
+/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/parameter_value.hpp:
+
+/opt/ros/humble/include/rclcpp/rclcpp/qos.hpp:
+
+/usr/include/c++/11/bits/hashtable_policy.h:
+
+/usr/include/c++/11/stdexcept:
+
+/opt/ros/humble/include/rclcpp/rclcpp/detail/cpp_callback_trampoline.hpp:
+
+/usr/include/c++/11/bits/stl_heap.h:
+
+/opt/ros/humble/include/rcpputils/rcpputils/pointer_traits.hpp:
+
+/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__traits.hpp:
+
+/usr/include/c++/11/bits/std_abs.h:
+
+/opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/compressed_image__struct.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/11/bits/stl_algo.h:
+
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/describe_parameters__traits.hpp:
 
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_type__struct.hpp:
@@ -1414,16 +1409,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/c++/11/limits:
 
 /opt/ros/humble/include/rclcpp/rclcpp/detail/resolve_intra_process_buffer_type.hpp:
-
-/usr/include/c++/11/bits/basic_ios.tcc:
-
-/usr/include/aarch64-linux-gnu/bits/mathcalls-narrow.h:
-
-/usr/include/c++/11/bits/enable_special_members.h:
-
-/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/parameter_value.hpp:
-
-/opt/ros/humble/include/rclcpp/rclcpp/qos.hpp:
 
 /usr/include/c++/11/ctime:
 
@@ -1451,15 +1436,21 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/aarch64-linux-gnu/c++/11/bits/ctype_base.h:
 
-/usr/include/linux/errno.h:
-
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter_value__traits.hpp:
 
 /usr/include/c++/11/functional:
 
+/usr/include/linux/errno.h:
+
 /usr/include/c++/11/cwctype:
 
 /usr/include/aarch64-linux-gnu/c++/11/bits/atomic_word.h:
+
+/usr/local/cuda/include/device_types.h:
+
+/opt/ros/humble/include/rclcpp/rclcpp/detail/subscription_callback_type_helper.hpp:
+
+/usr/include/c++/11/bits/locale_facets.h:
 
 /usr/include/c++/11/bits/exception.h:
 
@@ -1475,15 +1466,7 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /opt/ros/humble/include/builtin_interfaces/builtin_interfaces/msg/detail/time__traits.hpp:
 
-/usr/include/c++/11/stdexcept:
-
-/opt/ros/humble/include/rclcpp/rclcpp/detail/cpp_callback_trampoline.hpp:
-
 /usr/include/aarch64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/aarch64-linux-gnu/sys/procfs.h:
-
-/usr/include/c++/11/bits/locale_classes.h:
 
 /usr/local/include/opencv4/opencv2/flann/kdtree_index.h:
 
@@ -1537,29 +1520,19 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/__fpos64_t.h:
 
-/opt/ros/humble/include/rcpputils/rcpputils/pointer_traits.hpp:
-
-/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/list_parameters_result__traits.hpp:
-
-/usr/include/c++/11/bits/std_abs.h:
-
-/opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/compressed_image__struct.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/long-double.h:
-
-/usr/include/c++/11/bits/stl_heap.h:
-
-/usr/local/cuda/include/device_types.h:
-
-/usr/include/c++/11/bits/locale_facets.h:
-
-/opt/ros/humble/include/rclcpp/rclcpp/detail/subscription_callback_type_helper.hpp:
+/usr/include/aarch64-linux-gnu/asm/sigcontext.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/subscription_traits.hpp:
+
+/usr/include/aarch64-linux-gnu/sys/select.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/create_generic_subscription.hpp:
 
 /usr/include/c++/11/shared_mutex:
+
+/usr/local/include/opencv4/opencv2/core/check.hpp:
+
+/usr/include/c++/11/pstl/execution_defs.h:
 
 /usr/include/stdlib.h:
 
@@ -1607,10 +1580,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/c++/11/iostream:
 
-/usr/local/include/opencv4/opencv2/core/check.hpp:
-
-/usr/include/c++/11/pstl/execution_defs.h:
-
 /usr/include/string.h:
 
 /usr/local/include/opencv4/opencv2/flann/hierarchical_clustering_index.h:
@@ -1622,6 +1591,10 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/c++/11/bits/atomic_lockfree_defines.h:
 
 /usr/include/aarch64-linux-gnu/bits/typesizes.h:
+
+/usr/local/include/opencv4/opencv2/objdetect/charuco_detector.hpp:
+
+/usr/include/c++/11/bits/parse_numbers.h:
 
 /usr/include/c++/11/bits/shared_ptr_atomic.h:
 
@@ -1659,6 +1632,8 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/c++/11/future:
 
+/usr/include/c++/11/ratio:
+
 /usr/local/include/opencv4/opencv2/objdetect/aruco_board.hpp:
 
 /usr/include/c++/11/bits/codecvt.h:
@@ -1666,6 +1641,12 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /opt/ros/humble/include/rmw/rmw/events_statuses/liveliness_lost.h:
 
 /usr/include/aarch64-linux-gnu/c++/11/bits/cxxabi_tweaks.h:
+
+/usr/include/c++/11/bits/concept_check.h:
+
+/usr/include/asm-generic/types.h:
+
+/usr/include/asm-generic/bitsperlong.h:
 
 /home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include/smarthome_vision/trt_detector.hpp:
 
@@ -1717,9 +1698,13 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/c++/11/ext/alloc_traits.h:
 
+/usr/include/c++/11/chrono:
+
 /usr/include/c++/11/cstdio:
 
 /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h:
+
+/usr/include/aarch64-linux-gnu/asm/types.h:
 
 /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
 
@@ -1782,6 +1767,10 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/aarch64-linux-gnu/bits/wordsize.h:
 
 /usr/include/c++/11/cassert:
+
+/usr/include/c++/11/condition_variable:
+
+/usr/include/c++/11/optional:
 
 /usr/include/aarch64-linux-gnu/sys/single_threaded.h:
 
@@ -1855,17 +1844,19 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /opt/ros/humble/include/rcpputils/rcpputils/filesystem_helper.hpp:
 
+/opt/ros/humble/include/rclcpp/rclcpp/wait_set.hpp:
+
+/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:
+
+/usr/include/c++/11/unordered_map:
+
+/opt/ros/humble/include/rclcpp/rclcpp/subscription.hpp:
+
 /usr/include/c++/11/debug/debug.h:
 
 /opt/ros/humble/include/rcl/rcl/publisher.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
-
-/usr/include/aarch64-linux-gnu/asm/bitsperlong.h:
-
-/usr/local/include/opencv4/opencv2/objdetect/face.hpp:
-
-/opt/ros/humble/include/rmw/rmw/incompatible_qos_events_statuses.h:
 
 /usr/include/aarch64-linux-gnu/c++/11/bits/cpu_defines.h:
 
@@ -1910,8 +1901,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/local/cuda/include/driver_functions.h:
 
 /opt/ros/humble/include/rcl/rcl/types.h:
-
-/usr/include/asm-generic/posix_types.h:
 
 /usr/local/cuda/include/vector_functions.h:
 
@@ -1971,12 +1960,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_sched_param.h:
 
-/usr/include/aarch64-linux-gnu/asm/posix_types.h:
-
-/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/list_parameters__type_support.hpp:
-
-/usr/include/aarch64-linux-gnu/bits/setjmp.h:
-
 /usr/include/c++/11/bits/stl_iterator.h:
 
 /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/sequential_synchronization.hpp:
@@ -2008,6 +1991,8 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/aarch64-linux-gnu/bits/timex.h:
+
+/usr/include/c++/11/algorithm:
 
 /usr/include/c++/11/backward/binders.h:
 
@@ -2063,6 +2048,16 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /opt/ros/humble/include/rcl/rcl/log_level.h:
 
+/usr/include/aarch64-linux-gnu/asm/bitsperlong.h:
+
+/usr/local/include/opencv4/opencv2/objdetect/face.hpp:
+
+/opt/ros/humble/include/rmw/rmw/incompatible_qos_events_statuses.h:
+
+/usr/include/c++/11/bits/refwrap.h:
+
+/usr/include/linux/stddef.h:
+
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__traits.hpp:
 
 /usr/include/aarch64-linux-gnu/c++/11/bits/gthr.h:
@@ -2074,6 +2069,10 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/aarch64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/aarch64-linux-gnu/bits/endian.h:
+
+/usr/lib/gcc/aarch64-linux-gnu/11/include/stdint.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigcontext.h:
 
 /usr/local/include/opencv4/opencv2/flann/logger.h:
 
@@ -2087,8 +2086,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
 
-/usr/include/c++/11/bits/stl_algo.h:
-
 /usr/include/aarch64-linux-gnu/asm/sve_context.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/timer_t.h:
@@ -2096,6 +2093,16 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/aarch64-linux-gnu/bits/siginfo-arch.h:
+
+/usr/include/c++/11/bits/hashtable.h:
+
+/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/detail/list_parameters__type_support.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
+
+/usr/include/aarch64-linux-gnu/asm/posix_types.h:
 
 /usr/include/aarch64-linux-gnu/bits/types.h:
 
@@ -2132,6 +2139,32 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /usr/include/wchar.h:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigevent-consts.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigaction.h:
+
+/opt/ros/humble/include/rcl_interfaces/rcl_interfaces/srv/list_parameters.hpp:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/aarch64-linux-gnu/bits/posix1_lim.h:
+
+/opt/ros/humble/include/rcl/rcl/wait.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/c++/11/bits/locale_classes.h:
+
+/usr/include/aarch64-linux-gnu/sys/procfs.h:
+
+/usr/local/include/opencv4/opencv2/flann/general.h:
+
+/usr/local/include/opencv4/opencv2/calib3d.hpp:
+
+/usr/include/aarch64-linux-gnu/sys/ucontext.h:
 
 /usr/include/aarch64-linux-gnu/sys/user.h:
 
@@ -2183,18 +2216,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/include/c++/11/mutex:
 
-/usr/include/c++/11/chrono:
-
-/usr/include/c++/11/ratio:
-
-/usr/include/c++/11/optional:
-
-/usr/include/c++/11/condition_variable:
-
-/usr/local/include/opencv4/opencv2/objdetect/charuco_detector.hpp:
-
-/usr/include/c++/11/bits/parse_numbers.h:
-
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/11/bits/std_mutex.h:
@@ -2210,24 +2231,6 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 /opt/ros/humble/include/rcl_interfaces/rcl_interfaces/msg/detail/parameter__builder.hpp:
 
 /usr/include/c++/11/set:
-
-/opt/ros/humble/include/rclcpp/rclcpp/wait_set.hpp:
-
-/opt/ros/humble/include/rclcpp/rclcpp/executors/single_threaded_executor.hpp:
-
-/opt/ros/humble/include/rclcpp/rclcpp/subscription.hpp:
-
-/usr/include/c++/11/unordered_map:
-
-/usr/include/aarch64-linux-gnu/bits/siginfo-arch.h:
-
-/usr/include/c++/11/bits/hashtable.h:
-
-/usr/include/c++/11/bits/hashtable_policy.h:
-
-/usr/include/c++/11/bits/unordered_map.h:
-
-/usr/include/c++/11/algorithm:
 
 /usr/include/aarch64-linux-gnu/bits/cpu-set.h:
 
@@ -2245,11 +2248,11 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /usr/lib/gcc/aarch64-linux-gnu/11/include/stdbool.h:
 
-/usr/include/linux/types.h:
-
 /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_runtime_cpp/traits.hpp:
 
 /opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:
+
+/usr/include/linux/types.h:
 
 /opt/ros/humble/include/rcutils/rcutils/macros.h:
 
@@ -2487,9 +2490,9 @@ rosidl_generator_cpp/smarthome_vision/msg/detected_target.hpp:
 
 /opt/ros/humble/include/sensor_msgs/sensor_msgs/msg/detail/image__traits.hpp:
 
-/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
-
 /opt/ros/humble/include/rclcpp/rclcpp/type_support_decl.hpp:
+
+/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
 
 /opt/ros/humble/include/rcl/rcl/arguments.h:
 

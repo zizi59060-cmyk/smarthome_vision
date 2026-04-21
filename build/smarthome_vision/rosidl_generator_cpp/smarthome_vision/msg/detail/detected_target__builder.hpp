@@ -133,16 +133,32 @@ private:
   ::smarthome_vision::msg::DetectedTarget msg_;
 };
 
+class Init_DetectedTarget_mode
+{
+public:
+  explicit Init_DetectedTarget_mode(::smarthome_vision::msg::DetectedTarget & msg)
+  : msg_(msg)
+  {}
+  Init_DetectedTarget_tracking mode(::smarthome_vision::msg::DetectedTarget::_mode_type arg)
+  {
+    msg_.mode = std::move(arg);
+    return Init_DetectedTarget_tracking(msg_);
+  }
+
+private:
+  ::smarthome_vision::msg::DetectedTarget msg_;
+};
+
 class Init_DetectedTarget_stamp
 {
 public:
   Init_DetectedTarget_stamp()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_DetectedTarget_tracking stamp(::smarthome_vision::msg::DetectedTarget::_stamp_type arg)
+  Init_DetectedTarget_mode stamp(::smarthome_vision::msg::DetectedTarget::_stamp_type arg)
   {
     msg_.stamp = std::move(arg);
-    return Init_DetectedTarget_tracking(msg_);
+    return Init_DetectedTarget_mode(msg_);
   }
 
 private:

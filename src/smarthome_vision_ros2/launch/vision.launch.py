@@ -5,35 +5,41 @@ import os
 
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('smarthome_vision')
-    config_path = os.path.join(pkg_share, 'config', 'vision.yaml')
+    params_file = os.path.join(
+        get_package_share_directory("smarthome_vision"),
+        "config",
+        "vision_params.yaml"
+    )
 
-    usb_cam_node = Node(
-        package='usb_cam',
-        executable='usb_cam_node_exe',
-        name='usb_cam',
-        output='screen',
-        parameters=[{
-            'video_device': '/dev/video0',
-            'framerate': 30.0,
-            'image_width': 640,
-            'image_height': 480,
-            'pixel_format': 'yuyv',
-            'camera_frame_id': 'camera',
-            'camera_name': 'default_cam',
-            'io_method': 'mmap'
-        }]
+    cam_node = Node(
+        package="image_tools",
+        executable="cam2image",
+        name="cam2image",
+        output="log",   # 不在终端刷屏，写日志
+        parameters=[
+            {"device_id": 0}
+        ],
+        remappings=[
+            ("image", "/image_raw")
+        ]
     )
 
     vision_node = Node(
-        package='smarthome_vision',
-        executable='vision_node',
-        name='smarthome_vision_node',
-        output='screen',
-        parameters=[config_path],
+        package="smarthome_vision",
+        executable="vision_node",
+        name="smarthome_vision_node",
+        output="screen",
+        parameters=[
+            params_file,
+            {
+                "use_test_mode": True,
+                "test_mode": 2,
+                "show_debug": True
+            }
+        ]
     )
 
     return LaunchDescription([
-        usb_cam_node,
-        vision_node,
+        cam_node,
+        vision_node
     ])

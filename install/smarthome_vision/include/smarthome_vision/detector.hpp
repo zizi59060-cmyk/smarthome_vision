@@ -16,11 +16,6 @@ class Detector
 public:
   Detector(
     const std::string & keypoint_engine_path,
-    bool use_keypoint_detector,
-    const std::string & bbox_engine_path,
-    bool use_bbox_detector,
-    bool enable_bbox_fallback,
-    bool force_bbox_only,
     int input_width,
     int input_height,
     float conf_thres,
@@ -30,8 +25,6 @@ public:
   std::vector<Detection> infer(const cv::Mat & image);
 
 private:
-  static std::array<cv::Point2f, 4> bbox_to_corners(const cv::Rect2f & box);
-
   static std::array<cv::Point2f, 4> reorder_corners(
     const std::array<cv::Point2f, 4> & pts);
 
@@ -42,14 +35,8 @@ private:
     int img_h);
 
 private:
-  bool use_keypoint_detector_ = false;
-  bool use_bbox_detector_ = false;
-  bool enable_bbox_fallback_ = true;
-  bool force_bbox_only_ = false;
   bool use_cuda_preprocess_ = true;
-
   std::unique_ptr<TRTDetector> keypoint_detector_;
-  std::unique_ptr<TRTDetector> bbox_detector_;
 };
 
 }  // namespace smarthome_vision
