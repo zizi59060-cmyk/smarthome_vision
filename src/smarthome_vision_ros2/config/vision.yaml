@@ -1,7 +1,7 @@
 smarthome_vision_node:
   ros__parameters:
     image_topic: "/image_raw"
-    serial_device: "/dev/ttyACM1"
+    serial_device: "/dev/gimbal"
     baudrate: 115200
 
     show_debug: true

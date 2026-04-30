@@ -17,20 +17,18 @@ public:
 
   bool isOpened() const;
 
-  // 发送视觉结果
   bool sendTarget(uint8_t mode, bool tracking, uint8_t class_id, float x, float y, float z);
 
-  // 读取串口，刷新最新 mode
   bool updateReceive();
-
-  // 获取最新 mode
   uint8_t getMode() const;
+
+  // 新增：构造将要发给下位机的十六进制字符串
+  std::string buildTargetPacketHex(
+    uint8_t mode, bool tracking, uint8_t class_id, float x, float y, float z) const;
 
 private:
   bool openPort();
   void closePort();
-
-  // 从接收缓冲区解析最新合法包
   bool parseModePacket();
 
 private:

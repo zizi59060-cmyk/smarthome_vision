@@ -7,6 +7,8 @@
 #include <cerrno>
 #include <cstring>
 #include <iostream>
+#include <sstream>
+#include <iomanip>
 
 #include "smarthome_vision/crc16.hpp"
 #include "smarthome_vision/protocol.hpp"
@@ -93,6 +95,33 @@ void GimbalBridge::closePort()
 bool GimbalBridge::isOpened() const
 {
   return fd_ >= 0;
+}
+
+std::string GimbalBridge::buildTargetPacketHex(
+  uint8_t mode, bool tracking, uint8_t class_id, float x, float y, float z) const
+{
+  VisionToGimbal packet;
+  packet.mode = mode;
+  packet.tracking = tracking ? 1 : 0;
+  packet.class_id = class_id;
+  packet.x = x;
+  packet.y = y;
+  packet.z = z;
+  packet.crc16 = crc16_modbus(reinterpret_cast<uint8_t *>(&packet), sizeof(packet) - 2);
+
+  const uint8_t * bytes = reinterpret_cast<const uint8_t *>(&packet);
+
+  std::ostringstream oss;
+  oss << std::uppercase << std::hex << std::setfill('0');
+
+  for (size_t i = 0; i < sizeof(packet); ++i) {
+    oss << std::setw(2) << static_cast<int>(bytes[i]);
+    if (i + 1 < sizeof(packet)) {
+      oss << " ";
+    }
+  }
+
+  return oss.str();
 }
 
 bool GimbalBridge::sendTarget(

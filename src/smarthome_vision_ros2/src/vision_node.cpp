@@ -11,6 +11,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <builtin_interfaces/msg/time.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
 
@@ -417,6 +418,7 @@ public:
       get_parameter("baudrate").as_int());
 
     pub_ = create_publisher<smarthome_vision::msg::DetectedTarget>("detected_target", 10);
+    serial_tx_hex_pub_ = create_publisher<std_msgs::msg::String>("serial_tx_hex", 10);
 
     if (!use_local_camera_) {
       sub_ = create_subscription<sensor_msgs::msg::Image>(
@@ -496,6 +498,10 @@ private:
     out.z = 0.0f;
     pub_->publish(out);
 
+    std_msgs::msg::String hex_msg;
+    hex_msg.data = gimbal_->buildTargetPacketHex(mode, false, 0, 0.0f, 0.0f, 0.0f);
+    serial_tx_hex_pub_->publish(hex_msg);
+
     gimbal_->sendTarget(mode, false, 0, 0.0f, 0.0f, 0.0f);
   }
 
@@ -521,10 +527,17 @@ private:
     }
     pub_->publish(out);
 
+    const uint8_t tx_class_id = static_cast<uint8_t>(std::max(0, det.class_id));
+
+    std_msgs::msg::String hex_msg;
+    hex_msg.data = gimbal_->buildTargetPacketHex(
+      mode, true, tx_class_id, out.x, out.y, out.z);
+    serial_tx_hex_pub_->publish(hex_msg);
+
     gimbal_->sendTarget(
       mode,
       true,
-      static_cast<uint8_t>(std::max(0, det.class_id)),
+      tx_class_id,
       out.x, out.y, out.z);
   }
 
@@ -635,6 +648,7 @@ private:
 private:
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr sub_;
   rclcpp::Publisher<smarthome_vision::msg::DetectedTarget>::SharedPtr pub_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr serial_tx_hex_pub_;
   rclcpp::TimerBase::SharedPtr timer_;
 
   std::unique_ptr<Detector> object_detector_;
