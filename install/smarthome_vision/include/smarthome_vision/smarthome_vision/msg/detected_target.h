@@ -1,12 +1,1 @@
-// generated from rosidl_generator_c/resource/idl.h.em
-// with input from smarthome_vision:msg/DetectedTarget.idl
-// generated code does not contain a copyright notice
-
-#ifndef SMARTHOME_VISION__MSG__DETECTED_TARGET_H_
-#define SMARTHOME_VISION__MSG__DETECTED_TARGET_H_
-
-#include "smarthome_vision/msg/detail/detected_target__struct.h"
-#include "smarthome_vision/msg/detail/detected_target__functions.h"
-#include "smarthome_vision/msg/detail/detected_target__type_support.h"
-
-#endif  // SMARTHOME_VISION__MSG__DETECTED_TARGET_H_
+/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/rosidl_generator_c/smarthome_vision/msg/detected_target.h

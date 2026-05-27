@@ -1,1 +1,1 @@
-from smarthome_vision.msg._detected_target import DetectedTarget  # noqa: F401
+/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/rosidl_generator_py/smarthome_vision/msg/__init__.py

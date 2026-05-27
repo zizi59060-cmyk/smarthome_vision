@@ -1,5 +1,5 @@
 smarthome_vision_node:
-  ros__parameters:
+  ros__parameters: 
     image_topic: "/image_raw"
     serial_device: "/dev/gimbal"
     baudrate: 115200
@@ -8,7 +8,7 @@ smarthome_vision_node:
     use_cuda_preprocess: true
 
     use_test_mode: true
-    test_mode: 1
+    test_mode: 2
 
     use_local_camera: true
     camera_device_id: 0
@@ -34,13 +34,13 @@ smarthome_vision_node:
     object_input_width: 640
     object_input_height: 640
     object_conf_threshold: 0.25
-    object_score_threshold: 0.25
+    object_score_threshold: 0.1
     object_engine_path: "/home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/object.engine"
     object_model_class_ids: [0, 1, 2, 3]
 
     qr_input_width: 640
     qr_input_height: 640
-    qr_conf_threshold: 0.25
+    qr_conf_threshold: 0.3
     qr_score_threshold: 0.1
     qr_engine_path: "/home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/assets/qrcode.engine"
     qr_model_class_ids: [0, 1, 2, 3]

@@ -6,5 +6,5 @@ C_DEFINES = -DRCUTILS_ENABLE_FAULT_INJECTION -DROS_PACKAGE_NAME=\"smarthome_visi
 
 C_INCLUDES = -I/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/rosidl_generator_c -I/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/rosidl_generator_py -I/usr/include/python3.10 -I/home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2/include -I/usr/local/include/opencv4 -isystem /opt/ros/humble/include/builtin_interfaces -isystem /opt/ros/humble/include/rosidl_runtime_c -isystem /opt/ros/humble/include/rcutils -isystem /opt/ros/humble/include/rosidl_typesupport_interface -isystem /opt/ros/humble/include/std_msgs
 
-C_FLAGS = -fPIC -Wall -Wextra
+C_FLAGS = -O3 -DNDEBUG -fPIC -Wall -Wextra
 

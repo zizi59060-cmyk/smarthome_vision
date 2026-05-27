@@ -1,0 +1,920 @@
+[0.000000] (-) TimerEvent: {}
+[0.006786] (smarthome_vision) JobQueued: {'identifier': 'smarthome_vision', 'dependencies': OrderedDict()}
+[0.006967] (smarthome_vision) JobStarted: {'identifier': 'smarthome_vision'}
+[0.026814] (smarthome_vision) JobProgress: {'identifier': 'smarthome_vision', 'progress': 'cmake'}
+[0.028426] (smarthome_vision) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia4/smarthome_2026/ws/src/smarthome_vision_ros2', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia4/smarthome_2026/ws/install/smarthome_vision'], 'cwd': '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LANGUAGE', 'en_US:en'), ('LC_TIME', 'en_US.UTF-8'), ('USER', 'nvidia4'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('LD_LIBRARY_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/aarch64:/opt/MVS/lib/aarch64:'), ('SHLVL', '1'), ('HOME', '/home/nvidia4'), ('CHROME_DESKTOP', 'code.desktop'), ('OLDPWD', '/home/nvidia4/smarthome_2026/ws'), ('LESS', '-R'), ('DESKTOP_SESSION', 'ubuntu'), ('TERM_PROGRAM_VERSION', '1.120.0'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ZSH', '/home/nvidia4/.oh-my-zsh'), ('LSCOLORS', 'Gxfxcxdxbxegedabagacad'), ('GTK_MODULES', 'gail:atk-bridge'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('PAGER', 'less'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1627'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('SYSTEMD_EXEC_PID', '1890'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5953'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('COLCON_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install'), ('LOGNAME', 'nvidia4'), ('GTK_IM_MODULE', 'fcitx'), ('_', '/usr/bin/colcon'), ('JOURNAL_STREAM', '8:41704'), ('XDG_SESSION_CLASS', 'user'), ('ROS_VERSION', '2'), ('USERNAME', 'nvidia4'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('FC_FONTATIONS', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia4/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/share/code/bin:/usr/share/code/bin'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('PAPERSIZE', 'letter'), ('SESSION_MANAGER', 'local/nvidia4:@/tmp/.ICE-unix/1871,unix/nvidia4:/tmp/.ICE-unix/1871'), ('INVOCATION_ID', '52b3331b73e248cdbdc23324074c0546'), ('LC_ADDRESS', 'en_US.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('XDG_MENU_PREFIX', 'gnome-'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=fcitx'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-083b136bba.sock'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble'), ('LC_NAME', 'en_US.UTF-8'), ('SHELL', '/usr/bin/zsh'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'fcitx'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('VSCODE_NONCE', '5e6897c0-fba7-4043-8065-c8f0e47e1a3f'), ('PWD', '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'en_US.UTF-8'), ('MVCAM_SDK_VERSION', ''), ('PYTHONPATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('CMAKE_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble')]), 'shell': False}
+[0.099821] (-) TimerEvent: {}
+[0.182102] (smarthome_vision) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.200010] (-) TimerEvent: {}
+[0.295743] (smarthome_vision) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.300083] (-) TimerEvent: {}
+[0.307774] (smarthome_vision) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.400307] (-) TimerEvent: {}
+[0.477571] (smarthome_vision) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.487424] (smarthome_vision) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.488236] (smarthome_vision) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.488427] (smarthome_vision) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.500489] (-) TimerEvent: {}
+[0.534668] (smarthome_vision) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.600709] (-) TimerEvent: {}
+[0.730422] (-) TimerEvent: {}
+[0.733148] (smarthome_vision) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.745291] (smarthome_vision) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.746388] (smarthome_vision) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.747308] (smarthome_vision) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.756046] (smarthome_vision) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.830612] (-) TimerEvent: {}
+[0.931297] (-) TimerEvent: {}
+[1.031992] (-) TimerEvent: {}
+[1.160462] (-) TimerEvent: {}
+[1.261164] (-) TimerEvent: {}
+[1.292186] (smarthome_vision) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.361334] (-) TimerEvent: {}
+[1.462079] (-) TimerEvent: {}
+[1.481311] (smarthome_vision) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[1.535462] (smarthome_vision) StdoutLine: {'line': b'-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[1.562296] (-) TimerEvent: {}
+[1.616519] (smarthome_vision) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[1.625260] (smarthome_vision) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.677307] (-) TimerEvent: {}
+[1.677896] (smarthome_vision) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.678226] (smarthome_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.703099] (smarthome_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.777558] (-) TimerEvent: {}
+[1.819677] (smarthome_vision) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.868547] (smarthome_vision) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.877723] (-) TimerEvent: {}
+[1.978466] (-) TimerEvent: {}
+[2.079235] (-) TimerEvent: {}
+[2.125104] (smarthome_vision) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[2.190539] (smarthome_vision) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[2.190971] (-) TimerEvent: {}
+[2.265883] (smarthome_vision) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.291265] (-) TimerEvent: {}
+[2.300409] (smarthome_vision) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[2.391455] (-) TimerEvent: {}
+[2.492228] (-) TimerEvent: {}
+[2.530152] (smarthome_vision) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[2.531017] (smarthome_vision) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[2.593007] (-) TimerEvent: {}
+[2.695666] (-) TimerEvent: {}
+[2.773425] (smarthome_vision) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[2.773879] (smarthome_vision) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[2.795828] (-) TimerEvent: {}
+[2.840310] (smarthome_vision) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.1 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[2.896025] (-) TimerEvent: {}
+[2.899250] (smarthome_vision) StdoutLine: {'line': b'-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)\n'}
+[2.992756] (smarthome_vision) StdoutLine: {'line': b'-- Found CUDA: /usr/local/cuda (found suitable exact version "12.6") \n'}
+[2.996097] (-) TimerEvent: {}
+[3.037313] (smarthome_vision) StdoutLine: {'line': b'-- Found image_transport: 3.1.12 (/opt/ros/humble/share/image_transport/cmake)\n'}
+[3.097413] (-) TimerEvent: {}
+[3.110572] (smarthome_vision) StdoutLine: {'line': b'-- Found camera_info_manager: 3.1.12 (/opt/ros/humble/share/camera_info_manager/cmake)\n'}
+[3.160684] (smarthome_vision) StdoutLine: {'line': b'-- Found OpenCV: /usr/local (found version "4.10.0") found components: core imgproc highgui cudaarithm cudaimgproc cudawarping \n'}
+[3.161248] (smarthome_vision) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[3.214186] (-) TimerEvent: {}
+[3.233004] (smarthome_vision) StdoutLine: {'line': b'-- Found CUDAToolkit: /usr/local/cuda/include (found version "12.6.68") \n'}
+[3.314343] (-) TimerEvent: {}
+[3.415021] (-) TimerEvent: {}
+[3.515793] (-) TimerEvent: {}
+[3.616457] (-) TimerEvent: {}
+[3.733593] (-) TimerEvent: {}
+[3.835073] (-) TimerEvent: {}
+[3.935738] (-) TimerEvent: {}
+[4.036360] (-) TimerEvent: {}
+[4.137031] (-) TimerEvent: {}
+[4.167225] (smarthome_vision) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[4.237535] (-) TimerEvent: {}
+[4.338686] (-) TimerEvent: {}
+[4.439317] (-) TimerEvent: {}
+[4.539855] (-) TimerEvent: {}
+[4.640582] (-) TimerEvent: {}
+[4.741388] (-) TimerEvent: {}
+[4.842173] (-) TimerEvent: {}
+[4.942828] (-) TimerEvent: {}
+[5.043579] (-) TimerEvent: {}
+[5.144185] (-) TimerEvent: {}
+[5.148862] (smarthome_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[5.269298] (-) TimerEvent: {}
+[5.369987] (-) TimerEvent: {}
+[5.470608] (-) TimerEvent: {}
+[5.571343] (-) TimerEvent: {}
+[5.586346] (smarthome_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[5.633311] (smarthome_vision) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[5.652300] (smarthome_vision) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[5.671486] (-) TimerEvent: {}
+[5.704308] (smarthome_vision) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[5.704988] (smarthome_vision) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[5.705181] (smarthome_vision) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[5.705295] (smarthome_vision) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[5.762974] (smarthome_vision) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[5.771649] (-) TimerEvent: {}
+[5.872302] (-) TimerEvent: {}
+[5.973549] (-) TimerEvent: {}
+[6.074201] (-) TimerEvent: {}
+[6.091354] (smarthome_vision) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.174458] (-) TimerEvent: {}
+[6.207509] (smarthome_vision) StdoutLine: {'line': b'-- Generating done\n'}
+[6.243715] (smarthome_vision) StdoutLine: {'line': b'-- Build files have been written to: /home/nvidia4/smarthome_2026/ws/build/smarthome_vision\n'}
+[6.274727] (-) TimerEvent: {}
+[6.302866] (smarthome_vision) CommandEnded: {'returncode': 0}
+[6.304895] (smarthome_vision) JobProgress: {'identifier': 'smarthome_vision', 'progress': 'build'}
+[6.304955] (smarthome_vision) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision', '--', '-j8', '-l8'], 'cwd': '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LANGUAGE', 'en_US:en'), ('LC_TIME', 'en_US.UTF-8'), ('USER', 'nvidia4'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('LD_LIBRARY_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/aarch64:/opt/MVS/lib/aarch64:'), ('SHLVL', '1'), ('HOME', '/home/nvidia4'), ('CHROME_DESKTOP', 'code.desktop'), ('OLDPWD', '/home/nvidia4/smarthome_2026/ws'), ('LESS', '-R'), ('DESKTOP_SESSION', 'ubuntu'), ('TERM_PROGRAM_VERSION', '1.120.0'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ZSH', '/home/nvidia4/.oh-my-zsh'), ('LSCOLORS', 'Gxfxcxdxbxegedabagacad'), ('GTK_MODULES', 'gail:atk-bridge'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('PAGER', 'less'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1627'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('SYSTEMD_EXEC_PID', '1890'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5953'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('COLCON_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install'), ('LOGNAME', 'nvidia4'), ('GTK_IM_MODULE', 'fcitx'), ('_', '/usr/bin/colcon'), ('JOURNAL_STREAM', '8:41704'), ('XDG_SESSION_CLASS', 'user'), ('ROS_VERSION', '2'), ('USERNAME', 'nvidia4'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('FC_FONTATIONS', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia4/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/share/code/bin:/usr/share/code/bin'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('PAPERSIZE', 'letter'), ('SESSION_MANAGER', 'local/nvidia4:@/tmp/.ICE-unix/1871,unix/nvidia4:/tmp/.ICE-unix/1871'), ('INVOCATION_ID', '52b3331b73e248cdbdc23324074c0546'), ('LC_ADDRESS', 'en_US.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('XDG_MENU_PREFIX', 'gnome-'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=fcitx'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-083b136bba.sock'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble'), ('LC_NAME', 'en_US.UTF-8'), ('SHELL', '/usr/bin/zsh'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'fcitx'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('VSCODE_NONCE', '5e6897c0-fba7-4043-8065-c8f0e47e1a3f'), ('PWD', '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'en_US.UTF-8'), ('MVCAM_SDK_VERSION', ''), ('PYTHONPATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('CMAKE_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble')]), 'shell': False}
+[6.374954] (-) TimerEvent: {}
+[6.475701] (-) TimerEvent: {}
+[6.482937] (smarthome_vision) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating Rust code for ROS interfaces\x1b[0m\n'}
+[6.575893] (-) TimerEvent: {}
+[6.676525] (-) TimerEvent: {}
+[6.777206] (-) TimerEvent: {}
+[6.877899] (-) TimerEvent: {}
+[7.000517] (-) TimerEvent: {}
+[7.101149] (-) TimerEvent: {}
+[7.176432] (smarthome_vision) StdoutLine: {'line': b'[  2%] Built target smarthome_vision__rs\n'}
+[7.201332] (-) TimerEvent: {}
+[7.255631] (smarthome_vision) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/crc16.cpp.o\x1b[0m\n'}
+[7.301521] (-) TimerEvent: {}
+[7.332617] (smarthome_vision) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/detector.cpp.o\x1b[0m\n'}
+[7.401732] (-) TimerEvent: {}
+[7.502437] (-) TimerEvent: {}
+[7.603148] (-) TimerEvent: {}
+[7.703965] (-) TimerEvent: {}
+[7.804827] (-) TimerEvent: {}
+[7.905718] (-) TimerEvent: {}
+[8.011227] (-) TimerEvent: {}
+[8.111988] (-) TimerEvent: {}
+[8.212693] (-) TimerEvent: {}
+[8.313428] (-) TimerEvent: {}
+[8.414974] (-) TimerEvent: {}
+[8.515714] (-) TimerEvent: {}
+[8.616447] (-) TimerEvent: {}
+[8.742318] (-) TimerEvent: {}
+[8.863835] (-) TimerEvent: {}
+[8.964608] (-) TimerEvent: {}
+[9.065353] (-) TimerEvent: {}
+[9.166170] (-) TimerEvent: {}
+[9.266841] (-) TimerEvent: {}
+[9.392895] (-) TimerEvent: {}
+[9.493682] (-) TimerEvent: {}
+[9.594411] (-) TimerEvent: {}
+[9.715034] (-) TimerEvent: {}
+[9.815777] (-) TimerEvent: {}
+[9.916449] (-) TimerEvent: {}
+[10.021265] (-) TimerEvent: {}
+[10.121927] (-) TimerEvent: {}
+[10.230397] (-) TimerEvent: {}
+[10.359226] (-) TimerEvent: {}
+[10.459877] (-) TimerEvent: {}
+[10.472053] (smarthome_vision) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/trt_detector.cpp.o\x1b[0m\n'}
+[10.560099] (-) TimerEvent: {}
+[10.680723] (-) TimerEvent: {}
+[10.781370] (-) TimerEvent: {}
+[10.882128] (-) TimerEvent: {}
+[10.983666] (-) TimerEvent: {}
+[11.084487] (-) TimerEvent: {}
+[11.185207] (-) TimerEvent: {}
+[11.289474] (-) TimerEvent: {}
+[11.390106] (-) TimerEvent: {}
+[11.490821] (-) TimerEvent: {}
+[11.591584] (-) TimerEvent: {}
+[11.692269] (-) TimerEvent: {}
+[11.793128] (-) TimerEvent: {}
+[11.893837] (-) TimerEvent: {}
+[11.994591] (-) TimerEvent: {}
+[12.095404] (-) TimerEvent: {}
+[12.196150] (-) TimerEvent: {}
+[12.296888] (-) TimerEvent: {}
+[12.397657] (-) TimerEvent: {}
+[12.498320] (-) TimerEvent: {}
+[12.598982] (-) TimerEvent: {}
+[12.699705] (-) TimerEvent: {}
+[12.805283] (-) TimerEvent: {}
+[12.905999] (-) TimerEvent: {}
+[13.006732] (-) TimerEvent: {}
+[13.107416] (-) TimerEvent: {}
+[13.234112] (-) TimerEvent: {}
+[13.362707] (-) TimerEvent: {}
+[13.463397] (-) TimerEvent: {}
+[13.564080] (-) TimerEvent: {}
+[13.686072] (-) TimerEvent: {}
+[13.786802] (-) TimerEvent: {}
+[13.888192] (-) TimerEvent: {}
+[13.990840] (-) TimerEvent: {}
+[14.096821] (-) TimerEvent: {}
+[14.236617] (-) TimerEvent: {}
+[14.262579] (smarthome_vision) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/pose_solver.cpp.o\x1b[0m\n'}
+[14.336757] (-) TimerEvent: {}
+[14.437454] (-) TimerEvent: {}
+[14.538196] (-) TimerEvent: {}
+[14.638977] (-) TimerEvent: {}
+[14.739805] (-) TimerEvent: {}
+[14.840511] (-) TimerEvent: {}
+[14.947287] (-) TimerEvent: {}
+[15.048041] (-) TimerEvent: {}
+[15.149717] (-) TimerEvent: {}
+[15.250987] (-) TimerEvent: {}
+[15.356463] (-) TimerEvent: {}
+[15.457150] (-) TimerEvent: {}
+[15.557849] (-) TimerEvent: {}
+[15.658502] (-) TimerEvent: {}
+[15.759308] (-) TimerEvent: {}
+[15.860418] (-) TimerEvent: {}
+[15.961167] (-) TimerEvent: {}
+[16.061882] (-) TimerEvent: {}
+[16.162667] (-) TimerEvent: {}
+[16.263476] (-) TimerEvent: {}
+[16.364179] (-) TimerEvent: {}
+[16.464861] (-) TimerEvent: {}
+[16.565548] (-) TimerEvent: {}
+[16.666249] (-) TimerEvent: {}
+[16.767017] (-) TimerEvent: {}
+[16.867808] (-) TimerEvent: {}
+[16.968569] (-) TimerEvent: {}
+[17.074013] (-) TimerEvent: {}
+[17.174724] (-) TimerEvent: {}
+[17.179978] (smarthome_vision) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision_core.dir/src/gimbal_bridge.cpp.o\x1b[0m\n'}
+[17.292664] (-) TimerEvent: {}
+[17.393355] (-) TimerEvent: {}
+[17.494383] (-) TimerEvent: {}
+[17.595074] (-) TimerEvent: {}
+[17.695781] (-) TimerEvent: {}
+[17.796473] (-) TimerEvent: {}
+[17.897261] (-) TimerEvent: {}
+[17.997979] (-) TimerEvent: {}
+[18.098634] (-) TimerEvent: {}
+[18.208309] (-) TimerEvent: {}
+[18.322829] (-) TimerEvent: {}
+[18.424079] (-) TimerEvent: {}
+[18.524778] (-) TimerEvent: {}
+[18.625420] (-) TimerEvent: {}
+[18.726187] (-) TimerEvent: {}
+[18.735511] (smarthome_vision) StdoutLine: {'line': b'[ 17%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision_core.so\x1b[0m\n'}
+[18.826359] (-) TimerEvent: {}
+[18.927083] (-) TimerEvent: {}
+[19.027738] (-) TimerEvent: {}
+[19.130890] (-) TimerEvent: {}
+[19.235585] (smarthome_vision) StdoutLine: {'line': b'[ 17%] Built target smarthome_vision_core\n'}
+[19.236121] (-) TimerEvent: {}
+[19.314843] (smarthome_vision) StdoutLine: {'line': b'[ 17%] Built target ament_cmake_python_symlink_smarthome_vision\n'}
+[19.336303] (-) TimerEvent: {}
+[19.423460] (smarthome_vision) StdoutLine: {'line': b'[ 20%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[19.436478] (-) TimerEvent: {}
+[19.537079] (-) TimerEvent: {}
+[19.637885] (-) TimerEvent: {}
+[19.738598] (-) TimerEvent: {}
+[19.839369] (-) TimerEvent: {}
+[19.940037] (-) TimerEvent: {}
+[20.039143] (smarthome_vision) StdoutLine: {'line': b'[ 20%] Built target smarthome_vision__cpp\n'}
+[20.040126] (-) TimerEvent: {}
+[20.140767] (-) TimerEvent: {}
+[20.259142] (-) TimerEvent: {}
+[20.359665] (-) TimerEvent: {}
+[20.460272] (-) TimerEvent: {}
+[20.563210] (-) TimerEvent: {}
+[20.593665] (smarthome_vision) StdoutLine: {'line': b'running egg_info\n'}
+[20.596139] (smarthome_vision) StdoutLine: {'line': b'creating smarthome_vision.egg-info\n'}
+[20.597317] (smarthome_vision) StdoutLine: {'line': b'writing smarthome_vision.egg-info/PKG-INFO\n'}
+[20.598044] (smarthome_vision) StdoutLine: {'line': b'writing dependency_links to smarthome_vision.egg-info/dependency_links.txt\n'}
+[20.598384] (smarthome_vision) StdoutLine: {'line': b'writing top-level names to smarthome_vision.egg-info/top_level.txt\n'}
+[20.598869] (smarthome_vision) StdoutLine: {'line': b"writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'\n"}
+[20.609813] (smarthome_vision) StdoutLine: {'line': b"reading manifest file 'smarthome_vision.egg-info/SOURCES.txt'\n"}
+[20.611223] (smarthome_vision) StdoutLine: {'line': b"writing manifest file 'smarthome_vision.egg-info/SOURCES.txt'\n"}
+[20.663431] (-) TimerEvent: {}
+[20.726094] (smarthome_vision) StdoutLine: {'line': b'[ 20%] Built target ament_cmake_python_build_smarthome_vision_egg\n'}
+[20.759004] (smarthome_vision) StdoutLine: {'line': b'[ 22%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[20.764576] (-) TimerEvent: {}
+[20.869269] (-) TimerEvent: {}
+[20.992616] (-) TimerEvent: {}
+[21.120740] (-) TimerEvent: {}
+[21.221412] (-) TimerEvent: {}
+[21.313603] (smarthome_vision) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/smarthome_vision/msg/detected_target__type_support.cpp.o\x1b[0m\n'}
+[21.321567] (-) TimerEvent: {}
+[21.424485] (-) TimerEvent: {}
+[21.551278] (-) TimerEvent: {}
+[21.651975] (-) TimerEvent: {}
+[21.752724] (-) TimerEvent: {}
+[21.855930] (-) TimerEvent: {}
+[21.955473] (smarthome_vision) StdoutLine: {'line': b'[ 27%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[21.955968] (-) TimerEvent: {}
+[22.056483] (-) TimerEvent: {}
+[22.077678] (smarthome_vision) StdoutLine: {'line': b'[ 27%] Built target smarthome_vision__rosidl_typesupport_cpp\n'}
+[22.133506] (smarthome_vision) StdoutLine: {'line': b'[ 30%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[22.156648] (-) TimerEvent: {}
+[22.257343] (-) TimerEvent: {}
+[22.358215] (-) TimerEvent: {}
+[22.458947] (-) TimerEvent: {}
+[22.587580] (-) TimerEvent: {}
+[22.599734] (smarthome_vision) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/smarthome_vision/msg/detail/detected_target__type_support.cpp.o\x1b[0m\n'}
+[22.687899] (-) TimerEvent: {}
+[22.788648] (-) TimerEvent: {}
+[22.910840] (-) TimerEvent: {}
+[23.038759] (-) TimerEvent: {}
+[23.140784] (-) TimerEvent: {}
+[23.241470] (-) TimerEvent: {}
+[23.342172] (-) TimerEvent: {}
+[23.442898] (-) TimerEvent: {}
+[23.543603] (-) TimerEvent: {}
+[23.644372] (-) TimerEvent: {}
+[23.745058] (-) TimerEvent: {}
+[23.871794] (-) TimerEvent: {}
+[23.872302] (smarthome_vision) StdoutLine: {'line': b'[ 35%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[23.971968] (-) TimerEvent: {}
+[24.063079] (smarthome_vision) StdoutLine: {'line': b'[ 35%] Built target smarthome_vision__rosidl_typesupport_introspection_cpp\n'}
+[24.072320] (-) TimerEvent: {}
+[24.145892] (smarthome_vision) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/vision_node.dir/src/vision_node.cpp.o\x1b[0m\n'}
+[24.172507] (-) TimerEvent: {}
+[24.273228] (-) TimerEvent: {}
+[24.374317] (-) TimerEvent: {}
+[24.475084] (-) TimerEvent: {}
+[24.577415] (-) TimerEvent: {}
+[24.678622] (-) TimerEvent: {}
+[24.779316] (-) TimerEvent: {}
+[24.879916] (-) TimerEvent: {}
+[24.980641] (-) TimerEvent: {}
+[25.081572] (-) TimerEvent: {}
+[25.182663] (-) TimerEvent: {}
+[25.283452] (-) TimerEvent: {}
+[25.384575] (-) TimerEvent: {}
+[25.485795] (-) TimerEvent: {}
+[25.586631] (-) TimerEvent: {}
+[25.687753] (-) TimerEvent: {}
+[25.788723] (-) TimerEvent: {}
+[25.889783] (-) TimerEvent: {}
+[26.010069] (-) TimerEvent: {}
+[26.139017] (-) TimerEvent: {}
+[26.239725] (-) TimerEvent: {}
+[26.340451] (-) TimerEvent: {}
+[26.441129] (-) TimerEvent: {}
+[26.541865] (-) TimerEvent: {}
+[26.652194] (-) TimerEvent: {}
+[26.752889] (-) TimerEvent: {}
+[26.879754] (-) TimerEvent: {}
+[26.981056] (-) TimerEvent: {}
+[27.081869] (-) TimerEvent: {}
+[27.182663] (-) TimerEvent: {}
+[27.283732] (-) TimerEvent: {}
+[27.390971] (-) TimerEvent: {}
+[27.517201] (-) TimerEvent: {}
+[27.639664] (-) TimerEvent: {}
+[27.740614] (-) TimerEvent: {}
+[27.841354] (-) TimerEvent: {}
+[27.942154] (-) TimerEvent: {}
+[28.042838] (-) TimerEvent: {}
+[28.143548] (-) TimerEvent: {}
+[28.244247] (-) TimerEvent: {}
+[28.344923] (-) TimerEvent: {}
+[28.445794] (-) TimerEvent: {}
+[28.546901] (-) TimerEvent: {}
+[28.647656] (-) TimerEvent: {}
+[28.748512] (-) TimerEvent: {}
+[28.849212] (-) TimerEvent: {}
+[28.949942] (-) TimerEvent: {}
+[29.056220] (-) TimerEvent: {}
+[29.166127] (-) TimerEvent: {}
+[29.267509] (-) TimerEvent: {}
+[29.368215] (-) TimerEvent: {}
+[29.475156] (-) TimerEvent: {}
+[29.575837] (-) TimerEvent: {}
+[29.676492] (-) TimerEvent: {}
+[29.777181] (-) TimerEvent: {}
+[29.877854] (-) TimerEvent: {}
+[29.978728] (-) TimerEvent: {}
+[30.079951] (-) TimerEvent: {}
+[30.180627] (-) TimerEvent: {}
+[30.281379] (-) TimerEvent: {}
+[30.382049] (-) TimerEvent: {}
+[30.487732] (-) TimerEvent: {}
+[30.588424] (-) TimerEvent: {}
+[30.715823] (-) TimerEvent: {}
+[30.817197] (-) TimerEvent: {}
+[30.918058] (-) TimerEvent: {}
+[31.018881] (-) TimerEvent: {}
+[31.119701] (-) TimerEvent: {}
+[31.220369] (-) TimerEvent: {}
+[31.321148] (-) TimerEvent: {}
+[31.422008] (-) TimerEvent: {}
+[31.546975] (-) TimerEvent: {}
+[31.647826] (-) TimerEvent: {}
+[31.748531] (-) TimerEvent: {}
+[31.849351] (-) TimerEvent: {}
+[31.950313] (-) TimerEvent: {}
+[32.051109] (-) TimerEvent: {}
+[32.151830] (-) TimerEvent: {}
+[32.252460] (-) TimerEvent: {}
+[32.353204] (-) TimerEvent: {}
+[32.453932] (-) TimerEvent: {}
+[32.580800] (-) TimerEvent: {}
+[32.681570] (-) TimerEvent: {}
+[32.782408] (-) TimerEvent: {}
+[32.895224] (-) TimerEvent: {}
+[32.995951] (-) TimerEvent: {}
+[33.096818] (-) TimerEvent: {}
+[33.197613] (-) TimerEvent: {}
+[33.298483] (-) TimerEvent: {}
+[33.415549] (-) TimerEvent: {}
+[33.531294] (-) TimerEvent: {}
+[33.632183] (-) TimerEvent: {}
+[33.732956] (-) TimerEvent: {}
+[33.833758] (-) TimerEvent: {}
+[33.934697] (-) TimerEvent: {}
+[34.035369] (-) TimerEvent: {}
+[34.136094] (-) TimerEvent: {}
+[34.237082] (-) TimerEvent: {}
+[34.337917] (-) TimerEvent: {}
+[34.438607] (-) TimerEvent: {}
+[34.539436] (-) TimerEvent: {}
+[34.640533] (-) TimerEvent: {}
+[34.741263] (-) TimerEvent: {}
+[34.842077] (-) TimerEvent: {}
+[34.942893] (-) TimerEvent: {}
+[35.043747] (-) TimerEvent: {}
+[35.151754] (-) TimerEvent: {}
+[35.252606] (-) TimerEvent: {}
+[35.353349] (-) TimerEvent: {}
+[35.454143] (-) TimerEvent: {}
+[35.554875] (-) TimerEvent: {}
+[35.666216] (-) TimerEvent: {}
+[35.766905] (-) TimerEvent: {}
+[35.867679] (-) TimerEvent: {}
+[35.968690] (-) TimerEvent: {}
+[36.069418] (-) TimerEvent: {}
+[36.170100] (-) TimerEvent: {}
+[36.270812] (-) TimerEvent: {}
+[36.371563] (-) TimerEvent: {}
+[36.472296] (-) TimerEvent: {}
+[36.572966] (-) TimerEvent: {}
+[36.698809] (-) TimerEvent: {}
+[36.799502] (-) TimerEvent: {}
+[36.900258] (-) TimerEvent: {}
+[37.001035] (-) TimerEvent: {}
+[37.101719] (-) TimerEvent: {}
+[37.202987] (-) TimerEvent: {}
+[37.308834] (-) TimerEvent: {}
+[37.409635] (-) TimerEvent: {}
+[37.535615] (-) TimerEvent: {}
+[37.636344] (-) TimerEvent: {}
+[37.737067] (-) TimerEvent: {}
+[37.837870] (-) TimerEvent: {}
+[37.938730] (-) TimerEvent: {}
+[38.039494] (-) TimerEvent: {}
+[38.142373] (-) TimerEvent: {}
+[38.243586] (-) TimerEvent: {}
+[38.369756] (-) TimerEvent: {}
+[38.498411] (-) TimerEvent: {}
+[38.603314] (-) TimerEvent: {}
+[38.704117] (-) TimerEvent: {}
+[38.804950] (-) TimerEvent: {}
+[38.905876] (-) TimerEvent: {}
+[39.006599] (-) TimerEvent: {}
+[39.107412] (-) TimerEvent: {}
+[39.208178] (-) TimerEvent: {}
+[39.308987] (-) TimerEvent: {}
+[39.409691] (-) TimerEvent: {}
+[39.510526] (-) TimerEvent: {}
+[39.611383] (-) TimerEvent: {}
+[39.712201] (-) TimerEvent: {}
+[39.813018] (-) TimerEvent: {}
+[39.913891] (-) TimerEvent: {}
+[40.014648] (-) TimerEvent: {}
+[40.115345] (-) TimerEvent: {}
+[40.216227] (-) TimerEvent: {}
+[40.316979] (-) TimerEvent: {}
+[40.417653] (-) TimerEvent: {}
+[40.518369] (-) TimerEvent: {}
+[40.619289] (-) TimerEvent: {}
+[40.720207] (-) TimerEvent: {}
+[40.820938] (-) TimerEvent: {}
+[40.921663] (-) TimerEvent: {}
+[41.022338] (-) TimerEvent: {}
+[41.123009] (-) TimerEvent: {}
+[41.223787] (-) TimerEvent: {}
+[41.324446] (-) TimerEvent: {}
+[41.431224] (-) TimerEvent: {}
+[41.567257] (-) TimerEvent: {}
+[41.668082] (-) TimerEvent: {}
+[41.776766] (-) TimerEvent: {}
+[41.877322] (-) TimerEvent: {}
+[41.977894] (-) TimerEvent: {}
+[42.093363] (-) TimerEvent: {}
+[42.194176] (-) TimerEvent: {}
+[42.294962] (-) TimerEvent: {}
+[42.395766] (-) TimerEvent: {}
+[42.496457] (-) TimerEvent: {}
+[42.598527] (-) TimerEvent: {}
+[42.699441] (-) TimerEvent: {}
+[42.800171] (-) TimerEvent: {}
+[42.900945] (-) TimerEvent: {}
+[43.001690] (-) TimerEvent: {}
+[43.102349] (-) TimerEvent: {}
+[43.203090] (-) TimerEvent: {}
+[43.312595] (-) TimerEvent: {}
+[43.430612] (-) TimerEvent: {}
+[43.559245] (-) TimerEvent: {}
+[43.659985] (-) TimerEvent: {}
+[43.760792] (-) TimerEvent: {}
+[43.861589] (-) TimerEvent: {}
+[43.962343] (-) TimerEvent: {}
+[44.063006] (-) TimerEvent: {}
+[44.163722] (-) TimerEvent: {}
+[44.265433] (-) TimerEvent: {}
+[44.367713] (-) TimerEvent: {}
+[44.474783] (-) TimerEvent: {}
+[44.575619] (-) TimerEvent: {}
+[44.676376] (-) TimerEvent: {}
+[44.777045] (-) TimerEvent: {}
+[44.877762] (-) TimerEvent: {}
+[44.978436] (-) TimerEvent: {}
+[45.079237] (-) TimerEvent: {}
+[45.180015] (-) TimerEvent: {}
+[45.280862] (-) TimerEvent: {}
+[45.381770] (-) TimerEvent: {}
+[45.482594] (-) TimerEvent: {}
+[45.583476] (-) TimerEvent: {}
+[45.684124] (-) TimerEvent: {}
+[45.784879] (-) TimerEvent: {}
+[45.885609] (-) TimerEvent: {}
+[45.986318] (-) TimerEvent: {}
+[46.087170] (-) TimerEvent: {}
+[46.187948] (-) TimerEvent: {}
+[46.288855] (-) TimerEvent: {}
+[46.412930] (-) TimerEvent: {}
+[46.543124] (-) TimerEvent: {}
+[46.643806] (-) TimerEvent: {}
+[46.744503] (-) TimerEvent: {}
+[46.845251] (-) TimerEvent: {}
+[46.946008] (-) TimerEvent: {}
+[47.046817] (-) TimerEvent: {}
+[47.150676] (-) TimerEvent: {}
+[47.251371] (-) TimerEvent: {}
+[47.352026] (-) TimerEvent: {}
+[47.452695] (-) TimerEvent: {}
+[47.553446] (-) TimerEvent: {}
+[47.654266] (-) TimerEvent: {}
+[47.755004] (-) TimerEvent: {}
+[47.855766] (-) TimerEvent: {}
+[47.956420] (-) TimerEvent: {}
+[48.058521] (-) TimerEvent: {}
+[48.159391] (-) TimerEvent: {}
+[48.260252] (-) TimerEvent: {}
+[48.361027] (-) TimerEvent: {}
+[48.461762] (-) TimerEvent: {}
+[48.562576] (-) TimerEvent: {}
+[48.675624] (-) TimerEvent: {}
+[48.779704] (-) TimerEvent: {}
+[48.880500] (-) TimerEvent: {}
+[48.981211] (-) TimerEvent: {}
+[49.081959] (-) TimerEvent: {}
+[49.205410] (-) TimerEvent: {}
+[49.313509] (-) TimerEvent: {}
+[49.414369] (-) TimerEvent: {}
+[49.528753] (-) TimerEvent: {}
+[49.653106] (-) TimerEvent: {}
+[49.781858] (-) TimerEvent: {}
+[49.892508] (-) TimerEvent: {}
+[49.993194] (-) TimerEvent: {}
+[50.106536] (-) TimerEvent: {}
+[50.207187] (-) TimerEvent: {}
+[50.307876] (-) TimerEvent: {}
+[50.408571] (-) TimerEvent: {}
+[50.509292] (-) TimerEvent: {}
+[50.623168] (-) TimerEvent: {}
+[50.731218] (-) TimerEvent: {}
+[50.831876] (-) TimerEvent: {}
+[50.943217] (-) TimerEvent: {}
+[51.075149] (-) TimerEvent: {}
+[51.205697] (-) TimerEvent: {}
+[51.311662] (-) TimerEvent: {}
+[51.418838] (-) TimerEvent: {}
+[51.519795] (-) TimerEvent: {}
+[51.620534] (-) TimerEvent: {}
+[51.726770] (-) TimerEvent: {}
+[51.853948] (-) TimerEvent: {}
+[51.954574] (-) TimerEvent: {}
+[52.055235] (-) TimerEvent: {}
+[52.157049] (-) TimerEvent: {}
+[52.257751] (-) TimerEvent: {}
+[52.358437] (-) TimerEvent: {}
+[52.492042] (-) TimerEvent: {}
+[52.595252] (-) TimerEvent: {}
+[52.696148] (-) TimerEvent: {}
+[52.796932] (-) TimerEvent: {}
+[52.903118] (-) TimerEvent: {}
+[53.003863] (-) TimerEvent: {}
+[53.104612] (-) TimerEvent: {}
+[53.205338] (-) TimerEvent: {}
+[53.306031] (-) TimerEvent: {}
+[53.451423] (-) TimerEvent: {}
+[53.577345] (-) TimerEvent: {}
+[53.678620] (-) TimerEvent: {}
+[53.788773] (-) TimerEvent: {}
+[53.917033] (-) TimerEvent: {}
+[54.045261] (-) TimerEvent: {}
+[54.172532] (-) TimerEvent: {}
+[54.273180] (-) TimerEvent: {}
+[54.373924] (-) TimerEvent: {}
+[54.483135] (-) TimerEvent: {}
+[54.595003] (-) TimerEvent: {}
+[54.695780] (-) TimerEvent: {}
+[54.796503] (-) TimerEvent: {}
+[54.897963] (-) TimerEvent: {}
+[54.963421] (smarthome_vision) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX executable vision_node\x1b[0m\n'}
+[54.998221] (-) TimerEvent: {}
+[55.099372] (-) TimerEvent: {}
+[55.200069] (-) TimerEvent: {}
+[55.300644] (-) TimerEvent: {}
+[55.401222] (-) TimerEvent: {}
+[55.509434] (-) TimerEvent: {}
+[55.609968] (-) TimerEvent: {}
+[55.710687] (-) TimerEvent: {}
+[55.824413] (-) TimerEvent: {}
+[55.952644] (-) TimerEvent: {}
+[55.955795] (smarthome_vision) StderrLine: {'line': b'/usr/bin/ld: warning: libopencv_imgproc.so.4.5d, needed by /opt/ros/humble/lib/libcv_bridge.so, may conflict with libopencv_imgproc.so.410\n'}
+[55.957039] (smarthome_vision) StderrLine: {'line': b'/usr/bin/ld: warning: libopencv_core.so.4.5d, needed by /opt/ros/humble/lib/libcv_bridge.so, may conflict with libopencv_core.so.410\n'}
+[56.052836] (-) TimerEvent: {}
+[56.153615] (-) TimerEvent: {}
+[56.280103] (-) TimerEvent: {}
+[56.408042] (-) TimerEvent: {}
+[56.508775] (-) TimerEvent: {}
+[56.609481] (-) TimerEvent: {}
+[56.710223] (-) TimerEvent: {}
+[56.821447] (-) TimerEvent: {}
+[56.945957] (-) TimerEvent: {}
+[57.068454] (-) TimerEvent: {}
+[57.195594] (-) TimerEvent: {}
+[57.324933] (-) TimerEvent: {}
+[57.427227] (-) TimerEvent: {}
+[57.527921] (-) TimerEvent: {}
+[57.628592] (-) TimerEvent: {}
+[57.695452] (smarthome_vision) StdoutLine: {'line': b'[ 40%] Built target vision_node\n'}
+[57.728845] (-) TimerEvent: {}
+[57.734225] (smarthome_vision) StdoutLine: {'line': b'[ 42%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[57.828999] (-) TimerEvent: {}
+[57.929601] (-) TimerEvent: {}
+[58.043177] (-) TimerEvent: {}
+[58.161195] (-) TimerEvent: {}
+[58.261936] (-) TimerEvent: {}
+[58.362826] (-) TimerEvent: {}
+[58.363484] (smarthome_vision) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/smarthome_vision/msg/detail/dds_fastrtps/detected_target__type_support.cpp.o\x1b[0m\n'}
+[58.463007] (-) TimerEvent: {}
+[58.563958] (-) TimerEvent: {}
+[58.679243] (-) TimerEvent: {}
+[58.807423] (-) TimerEvent: {}
+[58.937562] (-) TimerEvent: {}
+[59.066193] (-) TimerEvent: {}
+[59.191491] (-) TimerEvent: {}
+[59.292169] (-) TimerEvent: {}
+[59.392971] (-) TimerEvent: {}
+[59.407690] (smarthome_vision) StdoutLine: {'line': b'[ 47%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[59.515372] (-) TimerEvent: {}
+[59.617174] (-) TimerEvent: {}
+[59.627942] (smarthome_vision) StdoutLine: {'line': b'[ 47%] Built target smarthome_vision__rosidl_typesupport_fastrtps_cpp\n'}
+[59.677140] (smarthome_vision) StdoutLine: {'line': b'[ 50%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[59.717349] (-) TimerEvent: {}
+[59.841937] (-) TimerEvent: {}
+[59.942533] (-) TimerEvent: {}
+[60.043725] (-) TimerEvent: {}
+[60.144348] (-) TimerEvent: {}
+[60.244980] (-) TimerEvent: {}
+[60.345662] (-) TimerEvent: {}
+[60.446383] (-) TimerEvent: {}
+[60.486889] (smarthome_vision) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_generator_c.dir/rosidl_generator_c/smarthome_vision/msg/detail/detected_target__functions.c.o\x1b[0m\n'}
+[60.547703] (-) TimerEvent: {}
+[60.614433] (smarthome_vision) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking C shared library libsmarthome_vision__rosidl_generator_c.so\x1b[0m\n'}
+[60.647877] (-) TimerEvent: {}
+[60.748561] (-) TimerEvent: {}
+[60.761038] (smarthome_vision) StdoutLine: {'line': b'[ 55%] Built target smarthome_vision__rosidl_generator_c\n'}
+[60.789398] (smarthome_vision) StdoutLine: {'line': b'[ 57%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[60.848709] (-) TimerEvent: {}
+[60.949352] (-) TimerEvent: {}
+[61.049992] (-) TimerEvent: {}
+[61.150762] (-) TimerEvent: {}
+[61.251414] (-) TimerEvent: {}
+[61.352094] (-) TimerEvent: {}
+[61.452927] (-) TimerEvent: {}
+[61.460073] (smarthome_vision) StdoutLine: {'line': b'[ 60%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/smarthome_vision/msg/detail/detected_target__type_support_c.cpp.o\x1b[0m\n'}
+[61.553108] (-) TimerEvent: {}
+[61.654357] (-) TimerEvent: {}
+[61.765488] (-) TimerEvent: {}
+[61.866198] (-) TimerEvent: {}
+[61.975827] (-) TimerEvent: {}
+[62.076506] (-) TimerEvent: {}
+[62.177203] (-) TimerEvent: {}
+[62.243338] (smarthome_vision) StdoutLine: {'line': b'[ 62%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[62.277376] (-) TimerEvent: {}
+[62.378030] (-) TimerEvent: {}
+[62.482348] (smarthome_vision) StdoutLine: {'line': b'[ 62%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c\n'}
+[62.482792] (-) TimerEvent: {}
+[62.507082] (smarthome_vision) StdoutLine: {'line': b'[ 65%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[62.582964] (-) TimerEvent: {}
+[62.683635] (-) TimerEvent: {}
+[62.784289] (-) TimerEvent: {}
+[62.884970] (-) TimerEvent: {}
+[62.987126] (-) TimerEvent: {}
+[63.087813] (-) TimerEvent: {}
+[63.124790] (smarthome_vision) StdoutLine: {'line': b'[ 67%] \x1b[32mBuilding CXX object CMakeFiles/smarthome_vision__rosidl_typesupport_c.dir/rosidl_typesupport_c/smarthome_vision/msg/detected_target__type_support.cpp.o\x1b[0m\n'}
+[63.187967] (-) TimerEvent: {}
+[63.215789] (smarthome_vision) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libsmarthome_vision__rosidl_typesupport_c.so\x1b[0m\n'}
+[63.307341] (-) TimerEvent: {}
+[63.327951] (smarthome_vision) StdoutLine: {'line': b'[ 70%] Built target smarthome_vision__rosidl_typesupport_c\n'}
+[63.387697] (smarthome_vision) StdoutLine: {'line': b'[ 72%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[63.409829] (-) TimerEvent: {}
+[63.510415] (-) TimerEvent: {}
+[63.611187] (-) TimerEvent: {}
+[63.711951] (-) TimerEvent: {}
+[63.812751] (-) TimerEvent: {}
+[63.913490] (-) TimerEvent: {}
+[64.011017] (smarthome_vision) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/smarthome_vision/msg/detail/detected_target__type_support.c.o\x1b[0m\n'}
+[64.013581] (-) TimerEvent: {}
+[64.104100] (smarthome_vision) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking C shared library libsmarthome_vision__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[64.113731] (-) TimerEvent: {}
+[64.214299] (-) TimerEvent: {}
+[64.215488] (smarthome_vision) StdoutLine: {'line': b'[ 77%] Built target smarthome_vision__rosidl_typesupport_introspection_c\n'}
+[64.297626] (smarthome_vision) StdoutLine: {'line': b'[ 77%] Built target smarthome_vision\n'}
+[64.315412] (-) TimerEvent: {}
+[64.422072] (smarthome_vision) StdoutLine: {'line': b'[ 80%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[64.424331] (-) TimerEvent: {}
+[64.525171] (-) TimerEvent: {}
+[64.653720] (-) TimerEvent: {}
+[64.754347] (-) TimerEvent: {}
+[64.856134] (-) TimerEvent: {}
+[64.956637] (-) TimerEvent: {}
+[65.057152] (-) TimerEvent: {}
+[65.157706] (-) TimerEvent: {}
+[65.231108] (smarthome_vision) StdoutLine: {'line': b'[ 80%] Built target smarthome_vision__py\n'}
+[65.283676] (-) TimerEvent: {}
+[65.291599] (smarthome_vision) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_generator_py.dir/rosidl_generator_py/smarthome_vision/msg/_detected_target_s.c.o\x1b[0m\n'}
+[65.407372] (-) TimerEvent: {}
+[65.508078] (-) TimerEvent: {}
+[65.555839] (smarthome_vision) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/smarthome_vision/libsmarthome_vision__rosidl_generator_py.so\x1b[0m\n'}
+[65.608311] (-) TimerEvent: {}
+[65.686357] (smarthome_vision) StdoutLine: {'line': b'[ 85%] Built target smarthome_vision__rosidl_generator_py\n'}
+[65.711493] (-) TimerEvent: {}
+[65.745957] (smarthome_vision) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[65.811715] (-) TimerEvent: {}
+[65.912504] (-) TimerEvent: {}
+[66.013203] (-) TimerEvent: {}
+[66.041275] (smarthome_vision) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[66.113678] (-) TimerEvent: {}
+[66.144075] (smarthome_vision) StdoutLine: {'line': b'[ 90%] Built target smarthome_vision__rosidl_typesupport_fastrtps_c__pyext\n'}
+[66.213755] (-) TimerEvent: {}
+[66.215441] (smarthome_vision) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[66.327622] (-) TimerEvent: {}
+[66.437989] (smarthome_vision) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[66.438555] (-) TimerEvent: {}
+[66.534391] (smarthome_vision) StdoutLine: {'line': b'[ 95%] Built target smarthome_vision__rosidl_typesupport_c__pyext\n'}
+[66.538800] (-) TimerEvent: {}
+[66.600946] (smarthome_vision) StdoutLine: {'line': b'[ 97%] \x1b[32mBuilding C object CMakeFiles/smarthome_vision__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[66.638992] (-) TimerEvent: {}
+[66.739827] (-) TimerEvent: {}
+[66.800293] (smarthome_vision) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[66.840012] (-) TimerEvent: {}
+[66.889006] (smarthome_vision) StdoutLine: {'line': b'[100%] Built target smarthome_vision__rosidl_typesupport_introspection_c__pyext\n'}
+[66.940201] (-) TimerEvent: {}
+[66.951011] (smarthome_vision) CommandEnded: {'returncode': 0}
+[66.953611] (smarthome_vision) JobProgress: {'identifier': 'smarthome_vision', 'progress': 'install'}
+[66.979895] (smarthome_vision) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision'], 'cwd': '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LANGUAGE', 'en_US:en'), ('LC_TIME', 'en_US.UTF-8'), ('USER', 'nvidia4'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('LD_LIBRARY_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/aarch64:/opt/MVS/lib/aarch64:'), ('SHLVL', '1'), ('HOME', '/home/nvidia4'), ('CHROME_DESKTOP', 'code.desktop'), ('OLDPWD', '/home/nvidia4/smarthome_2026/ws'), ('LESS', '-R'), ('DESKTOP_SESSION', 'ubuntu'), ('TERM_PROGRAM_VERSION', '1.120.0'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ZSH', '/home/nvidia4/.oh-my-zsh'), ('LSCOLORS', 'Gxfxcxdxbxegedabagacad'), ('GTK_MODULES', 'gail:atk-bridge'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('PAGER', 'less'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('MANAGERPID', '1627'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('SYSTEMD_EXEC_PID', '1890'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5953'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('COLCON_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install'), ('LOGNAME', 'nvidia4'), ('GTK_IM_MODULE', 'fcitx'), ('_', '/usr/bin/colcon'), ('JOURNAL_STREAM', '8:41704'), ('XDG_SESSION_CLASS', 'user'), ('ROS_VERSION', '2'), ('USERNAME', 'nvidia4'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('FC_FONTATIONS', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia4/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/share/code/bin:/usr/share/code/bin'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('PAPERSIZE', 'letter'), ('SESSION_MANAGER', 'local/nvidia4:@/tmp/.ICE-unix/1871,unix/nvidia4:/tmp/.ICE-unix/1871'), ('INVOCATION_ID', '52b3331b73e248cdbdc23324074c0546'), ('LC_ADDRESS', 'en_US.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('XDG_MENU_PREFIX', 'gnome-'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=fcitx'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-083b136bba.sock'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble'), ('LC_NAME', 'en_US.UTF-8'), ('SHELL', '/usr/bin/zsh'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('QT_IM_MODULE', 'fcitx'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('VSCODE_NONCE', '5e6897c0-fba7-4043-8065-c8f0e47e1a3f'), ('PWD', '/home/nvidia4/smarthome_2026/ws/build/smarthome_vision'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('CLUTTER_IM_MODULE', 'fcitx'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'en_US.UTF-8'), ('MVCAM_SDK_VERSION', ''), ('PYTHONPATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('CMAKE_PREFIX_PATH', '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision:/opt/ros/humble')]), 'shell': False}
+[66.993926] (smarthome_vision) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[66.994735] (smarthome_vision) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[66.995557] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/rosidl_interfaces/smarthome_vision\n'}
+[67.037257] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__functions.h\n'}
+[67.040321] (-) TimerEvent: {}
+[67.062241] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__struct.h\n'}
+[67.083313] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.h\n'}
+[67.130581] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detected_target.h\n'}
+[67.154237] (-) TimerEvent: {}
+[67.156502] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_generator_c__visibility_control.h\n'}
+[67.195227] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/library_path.sh\n'}
+[67.215697] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/library_path.dsv\n'}
+[67.254611] (-) TimerEvent: {}
+[67.262065] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_fastrtps_c.h\n'}
+[67.285771] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[67.317687] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__builder.hpp\n'}
+[67.339725] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__struct.hpp\n'}
+[67.354773] (-) TimerEvent: {}
+[67.356388] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__traits.hpp\n'}
+[67.389303] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__type_support.hpp\n'}
+[67.436422] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detected_target.hpp\n'}
+[67.440352] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[67.455000] (-) TimerEvent: {}
+[67.500779] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[67.501777] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[67.504045] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_introspection_c.h\n'}
+[67.529319] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[67.555468] (-) TimerEvent: {}
+[67.560746] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include/smarthome_vision/smarthome_vision/msg/detail/detected_target__rosidl_typesupport_introspection_cpp.hpp\n'}
+[67.586456] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/pythonpath.sh\n'}
+[67.604117] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/pythonpath.dsv\n'}
+[67.643433] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/PKG-INFO\n'}
+[67.654366] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/SOURCES.txt\n'}
+[67.655420] (-) TimerEvent: {}
+[67.693037] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/dependency_links.txt\n'}
+[67.694362] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision-0.0.1-py3.10.egg-info/top_level.txt\n'}
+[67.721096] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/__init__.py\n'}
+[67.763303] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_c.c\n'}
+[67.763757] (-) TimerEvent: {}
+[67.777172] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[67.822393] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/_smarthome_vision_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[67.844537] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/libsmarthome_vision__rosidl_generator_py.so\n'}
+[67.863977] (-) TimerEvent: {}
+[67.891478] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/__init__.py\n'}
+[67.927180] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/_detected_target.py\n'}
+[67.950920] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/_detected_target_s.c\n'}
+[67.963639] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[67.963992] (-) TimerEvent: {}
+[68.013085] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[68.013445] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[68.032157] (smarthome_vision) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[68.032622] (smarthome_vision) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[68.032852] (smarthome_vision) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[68.033015] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/rust_packages/smarthome_vision\n'}
+[68.077327] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/Cargo.toml\n'}
+[68.077690] (-) TimerEvent: {}
+[68.079185] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/build.rs\n'}
+[68.087421] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/lib.rs\n'}
+[68.101142] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/msg.rs\n'}
+[68.139701] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/rust/src/msg/rmw.rs\n'}
+[68.141588] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/msg/DetectedTarget.idl\n'}
+[68.155987] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/msg/DetectedTarget.msg\n'}
+[68.177893] (-) TimerEvent: {}
+[68.197302] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision_core.so\n'}
+[68.197726] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/smarthome_vision/vision_node\n'}
+[68.210782] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/crc16.hpp\n'}
+[68.261801] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/detector.hpp\n'}
+[68.262263] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/gimbal_bridge.hpp\n'}
+[68.278644] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/pose_solver.hpp\n'}
+[68.279382] (-) TimerEvent: {}
+[68.304126] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/protocol.hpp\n'}
+[68.335148] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/trt_detector.hpp\n'}
+[68.354398] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/include//smarthome_vision/types.hpp\n'}
+[68.370661] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/launch/vision.launch.py\n'}
+[68.379888] (-) TimerEvent: {}
+[68.392787] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/config/vision.yaml\n'}
+[68.416254] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/package_run_dependencies/smarthome_vision\n'}
+[68.451346] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/parent_prefix_path/smarthome_vision\n'}
+[68.465510] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/ament_prefix_path.sh\n'}
+[68.480049] (-) TimerEvent: {}
+[68.484702] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/ament_prefix_path.dsv\n'}
+[68.503308] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/path.sh\n'}
+[68.524732] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/environment/path.dsv\n'}
+[68.543810] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.bash\n'}
+[68.585898] (-) TimerEvent: {}
+[68.604821] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.sh\n'}
+[68.621356] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.zsh\n'}
+[68.638011] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/local_setup.dsv\n'}
+[68.659087] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/package.dsv\n'}
+[68.683004] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/ament_index/resource_index/packages/smarthome_vision\n'}
+[68.685971] (-) TimerEvent: {}
+[68.719368] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake-extras.cmake\n'}
+[68.735742] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[68.767841] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[68.777380] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[68.786180] (-) TimerEvent: {}
+[68.793952] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[68.825798] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[68.845121] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[68.886393] (-) TimerEvent: {}
+[68.901855] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_visionConfig.cmake\n'}
+[68.933467] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_visionConfig-version.cmake\n'}
+[68.969578] (smarthome_vision) StdoutLine: {'line': b'-- Symlinking: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/package.xml\n'}
+[68.986526] (-) TimerEvent: {}
+[69.025811] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_c.so\n'}
+[69.026295] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_c.so" to ""\n'}
+[69.026446] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_c.so\n'}
+[69.026561] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[69.026666] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so\n'}
+[69.026766] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[69.026864] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_c.so\n'}
+[69.027005] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_c.so" to ""\n'}
+[69.027130] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_c.so\n'}
+[69.027230] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_c.so" to ""\n'}
+[69.027324] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_cpp.so\n'}
+[69.027416] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[69.027505] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_cpp.so\n'}
+[69.027595] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_typesupport_cpp.so" to ""\n'}
+[69.089170] (smarthome_vision) StdoutLine: {'line': b"Listing '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision'...\n"}
+[69.089667] (-) TimerEvent: {}
+[69.089949] (smarthome_vision) StdoutLine: {'line': b"Compiling '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/__init__.py'...\n"}
+[69.090131] (smarthome_vision) StdoutLine: {'line': b"Listing '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg'...\n"}
+[69.090251] (smarthome_vision) StdoutLine: {'line': b"Compiling '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/__init__.py'...\n"}
+[69.090355] (smarthome_vision) StdoutLine: {'line': b"Compiling '/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/local/lib/python3.10/dist-packages/smarthome_vision/msg/_detected_target.py'...\n"}
+[69.111338] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_py.so\n'}
+[69.111994] (smarthome_vision) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia4/smarthome_2026/ws/install/smarthome_vision/lib/libsmarthome_vision__rosidl_generator_py.so" to ""\n'}
+[69.112357] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cExport.cmake\n'}
+[69.112670] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cExport-noconfig.cmake\n'}
+[69.112933] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[69.113180] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[69.113545] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_cppExport.cmake\n'}
+[69.113835] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[69.114024] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[69.114290] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cExport.cmake\n'}
+[69.114571] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[69.114848] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cExport.cmake\n'}
+[69.115097] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[69.115371] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[69.115604] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[69.115848] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cppExport.cmake\n'}
+[69.116073] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/smarthome_vision__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[69.116314] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_pyExport.cmake\n'}
+[69.116554] (smarthome_vision) StdoutLine: {'line': b'-- Installing: /home/nvidia4/smarthome_2026/ws/install/smarthome_vision/share/smarthome_vision/cmake/export_smarthome_vision__rosidl_generator_pyExport-noconfig.cmake\n'}
+[69.127386] (smarthome_vision) CommandEnded: {'returncode': 0}
+[69.189825] (-) TimerEvent: {}
+[69.190742] (smarthome_vision) JobEnded: {'identifier': 'smarthome_vision', 'rc': 0}
+[69.192680] (-) EventReactorShutdown: {}

@@ -1,1 +1,1 @@
-smarthome_vision
+/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/ament_cmake_python/smarthome_vision/smarthome_vision.egg-info/top_level.txt

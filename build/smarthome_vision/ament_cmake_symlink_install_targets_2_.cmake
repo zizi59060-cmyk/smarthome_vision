@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/rosidl_generator_py/smarthome_vision/smarthome_vision_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" "TARGETS" "smarthome_vision__rosidl_typesupport_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/smarthome_vision")

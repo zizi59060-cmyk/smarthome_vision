@@ -55,3 +55,6 @@ endforeach()
 message(STATUS "Execute custom uninstall script")
 
 # begin of custom uninstall code
+
+# uninstall files installed using the symlink install functions
+include("/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/ament_cmake_symlink_install/ament_cmake_symlink_install_uninstall_script.cmake")

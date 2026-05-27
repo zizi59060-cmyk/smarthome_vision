@@ -315,17 +315,17 @@ smarthome_vision__rosidl_typesupport_cpp/fast:
 .PHONY : smarthome_vision__rosidl_typesupport_cpp/fast
 
 #=============================================================================
-# Target rules for targets named ament_cmake_python_copy_smarthome_vision
+# Target rules for targets named ament_cmake_python_symlink_smarthome_vision
 
 # Build rule for target.
-ament_cmake_python_copy_smarthome_vision: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_smarthome_vision
-.PHONY : ament_cmake_python_copy_smarthome_vision
+ament_cmake_python_symlink_smarthome_vision: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_smarthome_vision
+.PHONY : ament_cmake_python_symlink_smarthome_vision
 
 # fast build rule for target.
-ament_cmake_python_copy_smarthome_vision/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_smarthome_vision.dir/build.make CMakeFiles/ament_cmake_python_copy_smarthome_vision.dir/build
-.PHONY : ament_cmake_python_copy_smarthome_vision/fast
+ament_cmake_python_symlink_smarthome_vision/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_smarthome_vision.dir/build.make CMakeFiles/ament_cmake_python_symlink_smarthome_vision.dir/build
+.PHONY : ament_cmake_python_symlink_smarthome_vision/fast
 
 #=============================================================================
 # Target rules for targets named ament_cmake_python_build_smarthome_vision_egg
@@ -866,7 +866,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ament_cmake_python_build_smarthome_vision_egg"
-	@echo "... ament_cmake_python_copy_smarthome_vision"
+	@echo "... ament_cmake_python_symlink_smarthome_vision"
 	@echo "... smarthome_vision"
 	@echo "... smarthome_vision__cpp"
 	@echo "... smarthome_vision__py"

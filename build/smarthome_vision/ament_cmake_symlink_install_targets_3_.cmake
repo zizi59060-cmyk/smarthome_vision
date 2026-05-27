@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/nvidia4/smarthome_2026/ws/build/smarthome_vision/libsmarthome_vision_core.so" "TARGETS" "smarthome_vision_core" "LIBRARY_DESTINATION" "lib" "ARCHIVE_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")
