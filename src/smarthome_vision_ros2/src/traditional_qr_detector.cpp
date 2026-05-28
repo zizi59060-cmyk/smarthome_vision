@@ -352,7 +352,7 @@ void TraditionalQrDetector::ensureTuningWindows()
 
   cv::namedWindow("traditional_qr_params", cv::WINDOW_NORMAL);
   cv::resizeWindow("traditional_qr_params", 460, 680);
-  cv::createTrackbar("mode 0=white 1=blacktag 2=blackcode", "traditional_qr_params", &params_.black_tag_mode, 2);
+  cv::createTrackbar("mode 0=white 1=blacktag 2=code-only", "traditional_qr_params", &params_.black_tag_mode, 2);
   cv::createTrackbar("threshold 0=otsu", "traditional_qr_params", &params_.threshold, 255);
   cv::createTrackbar("invert", "traditional_qr_params", &params_.invert, 1);
   cv::createTrackbar("blur", "traditional_qr_params", &params_.blur, 5);
@@ -713,8 +713,16 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCo
   const cv::Mat & mask,
   cv::Mat * grouped_debug) const
 {
-  cv::Mat grouped = mask.clone();
-  const int group_kernel_size = std::max(3, params_.group_dilate * 2 + 1);
+  cv::Mat foreground = mask.clone();
+  const double foreground_ratio =
+    static_cast<double>(cv::countNonZero(foreground)) /
+    static_cast<double>(foreground.rows * foreground.cols);
+  if (foreground_ratio > 0.5) {
+    cv::bitwise_not(foreground, foreground);
+  }
+
+  cv::Mat grouped = foreground.clone();
+  const int group_kernel_size = std::max(3, params_.group_dilate * 10 + 1);
   cv::Mat kernel = cv::Mat::ones(group_kernel_size, group_kernel_size, CV_8UC1);
   cv::morphologyEx(grouped, grouped, cv::MORPH_CLOSE, kernel);
   cv::dilate(grouped, grouped, kernel);
@@ -755,7 +763,7 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCo
       continue;
     }
 
-    cv::Rect raw_bbox = foregroundBBox(mask(bbox));
+    cv::Rect raw_bbox = foregroundBBox(foreground(bbox));
     if (raw_bbox.empty()) {
       continue;
     }
@@ -763,7 +771,7 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCo
     raw_bbox.y += bbox.y;
     raw_bbox &= image_rect;
 
-    cv::Mat normalized = cropSquare(mask, raw_bbox, pad);
+    cv::Mat normalized = cropSquare(foreground, raw_bbox, pad);
     if (normalized.empty()) {
       continue;
     }
