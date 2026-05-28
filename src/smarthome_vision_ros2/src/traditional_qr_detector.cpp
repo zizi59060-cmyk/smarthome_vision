@@ -713,20 +713,25 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCo
   const cv::Mat & mask,
   cv::Mat * grouped_debug) const
 {
+  cv::Mat grouped = mask.clone();
+  const int group_kernel_size = std::max(3, params_.group_dilate * 2 + 1);
+  cv::Mat kernel = cv::Mat::ones(group_kernel_size, group_kernel_size, CV_8UC1);
+  cv::morphologyEx(grouped, grouped, cv::MORPH_CLOSE, kernel);
+  cv::dilate(grouped, grouped, kernel);
+
   if (grouped_debug != nullptr) {
-    *grouped_debug = mask.clone();
+    *grouped_debug = grouped.clone();
   }
 
   std::vector<std::vector<cv::Point>> contours;
-  cv::findContours(mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+  cv::findContours(grouped, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
   const cv::Rect image_rect(0, 0, mask.cols, mask.rows);
   const int min_area = std::max(1, params_.min_area_x100 * 100);
   const int max_area = std::max(min_area, params_.max_area_x1000 * 1000);
-  const int min_component_area = std::max(8, min_area / 20);
+  const double pad = std::max(0.0, params_.pad_percent / 100.0);
+  std::vector<Candidate> candidates;
 
-  cv::Rect union_bbox;
-  bool have_component = false;
   for (const auto & contour : contours) {
     cv::Rect bbox = cv::boundingRect(contour) & image_rect;
     if (bbox.empty()) {
@@ -740,51 +745,54 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCo
       continue;
     }
 
-    if (bbox.area() < min_component_area) {
+    const int area = bbox.area();
+    if (area < min_area || area > max_area) {
       continue;
     }
 
-    union_bbox = have_component ? (union_bbox | bbox) : bbox;
-    have_component = true;
+    const double aspect = bbox.width / static_cast<double>(bbox.height);
+    if (aspect < 0.40 || aspect > 2.50) {
+      continue;
+    }
+
+    cv::Rect raw_bbox = foregroundBBox(mask(bbox));
+    if (raw_bbox.empty()) {
+      continue;
+    }
+    raw_bbox.x += bbox.x;
+    raw_bbox.y += bbox.y;
+    raw_bbox &= image_rect;
+
+    cv::Mat normalized = cropSquare(mask, raw_bbox, pad);
+    if (normalized.empty()) {
+      continue;
+    }
+
+    cv::Mat normalized_binary;
+    cv::threshold(normalized, normalized_binary, 0, 1, cv::THRESH_BINARY);
+    const double white_ratio =
+      static_cast<double>(cv::countNonZero(normalized_binary)) /
+      static_cast<double>(normalized_binary.rows * normalized_binary.cols);
+    if (white_ratio < 0.03 || white_ratio > 0.75) {
+      continue;
+    }
+
+    Candidate candidate;
+    candidate.bbox = squareRectAround(raw_bbox, pad);
+    candidate.corners = cornersFromRect(candidate.bbox);
+    candidate.mask = normalized_binary;
+    candidate.grid = maskToGrid(normalized);
+    candidate.white_ratio = white_ratio;
+    candidate.components = countComponents(normalized);
+    candidates.push_back(std::move(candidate));
   }
 
-  if (!have_component) {
-    return {};
-  }
+  std::sort(candidates.begin(), candidates.end(),
+    [](const Candidate & a, const Candidate & b) {
+      return a.bbox.area() > b.bbox.area();
+    });
 
-  const int area = union_bbox.area();
-  if (area < min_area || area > max_area) {
-    return {};
-  }
-
-  const double aspect = union_bbox.width / static_cast<double>(union_bbox.height);
-  if (aspect < 0.40 || aspect > 2.50) {
-    return {};
-  }
-
-  const double pad = std::max(0.0, params_.pad_percent / 100.0);
-  cv::Mat normalized = cropSquare(mask, union_bbox, pad);
-  if (normalized.empty()) {
-    return {};
-  }
-
-  cv::Mat normalized_binary;
-  cv::threshold(normalized, normalized_binary, 0, 1, cv::THRESH_BINARY);
-  const double white_ratio =
-    static_cast<double>(cv::countNonZero(normalized_binary)) /
-    static_cast<double>(normalized_binary.rows * normalized_binary.cols);
-  if (white_ratio < 0.03 || white_ratio > 0.75) {
-    return {};
-  }
-
-  Candidate candidate;
-  candidate.bbox = squareRectAround(union_bbox, pad);
-  candidate.corners = cornersFromRect(candidate.bbox);
-  candidate.mask = normalized_binary;
-  candidate.grid = maskToGrid(normalized);
-  candidate.white_ratio = white_ratio;
-  candidate.components = countComponents(normalized);
-  return {candidate};
+  return candidates;
 }
 
 std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findCandidates(
