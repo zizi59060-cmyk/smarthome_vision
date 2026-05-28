@@ -26,7 +26,7 @@ public:
 private:
   struct Params
   {
-    int black_tag_mode = 1;
+    int black_tag_mode = 2;
     int threshold = 128;
     int invert = 0;
     int blur = 1;
@@ -84,6 +84,9 @@ private:
     const cv::Mat & mask,
     cv::Mat * grouped_debug) const;
   std::vector<Candidate> findBlackTagCandidates(
+    const cv::Mat & mask,
+    cv::Mat * grouped_debug) const;
+  std::vector<Candidate> findBlackCodeCandidates(
     const cv::Mat & mask,
     cv::Mat * grouped_debug) const;
   std::vector<Candidate> findCandidates(

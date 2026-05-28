@@ -154,7 +154,7 @@ cv::Rect foregroundBBox(const cv::Mat & mask)
   return cv::boundingRect(points);
 }
 
-cv::Mat cropSquare(const cv::Mat & mask, const cv::Rect & bbox, double pad_frac)
+cv::Rect squareRectAround(const cv::Rect & bbox, double pad_frac)
 {
   if (bbox.empty()) {
     return {};
@@ -170,9 +170,25 @@ cv::Mat cropSquare(const cv::Mat & mask, const cv::Rect & bbox, double pad_frac)
   const double cy = bbox.y + bbox.height / 2.0;
   const int x0 = static_cast<int>(std::round(cx - side / 2.0));
   const int y0 = static_cast<int>(std::round(cy - side / 2.0));
+  return cv::Rect(x0, y0, side, side);
+}
+
+cv::Mat cropSquare(const cv::Mat & mask, const cv::Rect & bbox, double pad_frac)
+{
+  if (bbox.empty()) {
+    return {};
+  }
+
+  const cv::Rect wanted = squareRectAround(bbox, pad_frac);
+  if (wanted.empty()) {
+    return {};
+  }
+
+  const int side = wanted.width;
+  const int x0 = wanted.x;
+  const int y0 = wanted.y;
   const cv::Rect dst_rect(0, 0, side, side);
   const cv::Rect src_rect(0, 0, mask.cols, mask.rows);
-  const cv::Rect wanted(x0, y0, side, side);
   const cv::Rect src = wanted & src_rect;
   if (src.empty()) {
     return {};
@@ -336,7 +352,7 @@ void TraditionalQrDetector::ensureTuningWindows()
 
   cv::namedWindow("traditional_qr_params", cv::WINDOW_NORMAL);
   cv::resizeWindow("traditional_qr_params", 460, 680);
-  cv::createTrackbar("mode 0=white 1=blacktag", "traditional_qr_params", &params_.black_tag_mode, 1);
+  cv::createTrackbar("mode 0=white 1=blacktag 2=blackcode", "traditional_qr_params", &params_.black_tag_mode, 2);
   cv::createTrackbar("threshold 0=otsu", "traditional_qr_params", &params_.threshold, 255);
   cv::createTrackbar("invert", "traditional_qr_params", &params_.invert, 1);
   cv::createTrackbar("blur", "traditional_qr_params", &params_.blur, 5);
@@ -389,7 +405,7 @@ void TraditionalQrDetector::rebuildTemplatesIfNeeded()
 
   for (const auto & tmpl : gridTemplates()) {
     cv::Mat base = templateMaskFromGrid(tmpl);
-    if (params_.black_tag_mode == 0) {
+    if (params_.black_tag_mode != 1) {
       const cv::Rect bbox = foregroundBBox(base);
       base = cropSquare(base, bbox, std::max(0.0, params_.pad_percent / 100.0));
       if (base.empty()) {
@@ -442,7 +458,11 @@ cv::Mat TraditionalQrDetector::preprocess(const cv::Mat & image) const
     cv::threshold(work, mask, static_cast<double>(params_.threshold), 255.0, cv::THRESH_BINARY);
   }
 
-  if (params_.invert != 0) {
+  bool invert_mask = params_.invert != 0;
+  if (params_.black_tag_mode == 2) {
+    invert_mask = !invert_mask;
+  }
+  if (invert_mask) {
     cv::bitwise_not(mask, mask);
   }
 
@@ -672,8 +692,8 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findWhitePa
     }
 
     Candidate candidate;
-    candidate.bbox = raw_bbox;
-    candidate.corners = cornersFromRect(raw_bbox);
+    candidate.bbox = squareRectAround(raw_bbox, pad);
+    candidate.corners = cornersFromRect(candidate.bbox);
     candidate.mask = normalized_binary;
     candidate.grid = maskToGrid(normalized);
     candidate.white_ratio = white_ratio;
@@ -689,12 +709,93 @@ std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findWhitePa
   return candidates;
 }
 
+std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findBlackCodeCandidates(
+  const cv::Mat & mask,
+  cv::Mat * grouped_debug) const
+{
+  if (grouped_debug != nullptr) {
+    *grouped_debug = mask.clone();
+  }
+
+  std::vector<std::vector<cv::Point>> contours;
+  cv::findContours(mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+
+  const cv::Rect image_rect(0, 0, mask.cols, mask.rows);
+  const int min_area = std::max(1, params_.min_area_x100 * 100);
+  const int max_area = std::max(min_area, params_.max_area_x1000 * 1000);
+  const int min_component_area = std::max(8, min_area / 20);
+
+  cv::Rect union_bbox;
+  bool have_component = false;
+  for (const auto & contour : contours) {
+    cv::Rect bbox = cv::boundingRect(contour) & image_rect;
+    if (bbox.empty()) {
+      continue;
+    }
+
+    if (bbox.x <= 2 || bbox.y <= 2 ||
+        bbox.x + bbox.width >= mask.cols - 2 ||
+        bbox.y + bbox.height >= mask.rows - 2)
+    {
+      continue;
+    }
+
+    if (bbox.area() < min_component_area) {
+      continue;
+    }
+
+    union_bbox = have_component ? (union_bbox | bbox) : bbox;
+    have_component = true;
+  }
+
+  if (!have_component) {
+    return {};
+  }
+
+  const int area = union_bbox.area();
+  if (area < min_area || area > max_area) {
+    return {};
+  }
+
+  const double aspect = union_bbox.width / static_cast<double>(union_bbox.height);
+  if (aspect < 0.40 || aspect > 2.50) {
+    return {};
+  }
+
+  const double pad = std::max(0.0, params_.pad_percent / 100.0);
+  cv::Mat normalized = cropSquare(mask, union_bbox, pad);
+  if (normalized.empty()) {
+    return {};
+  }
+
+  cv::Mat normalized_binary;
+  cv::threshold(normalized, normalized_binary, 0, 1, cv::THRESH_BINARY);
+  const double white_ratio =
+    static_cast<double>(cv::countNonZero(normalized_binary)) /
+    static_cast<double>(normalized_binary.rows * normalized_binary.cols);
+  if (white_ratio < 0.03 || white_ratio > 0.75) {
+    return {};
+  }
+
+  Candidate candidate;
+  candidate.bbox = squareRectAround(union_bbox, pad);
+  candidate.corners = cornersFromRect(candidate.bbox);
+  candidate.mask = normalized_binary;
+  candidate.grid = maskToGrid(normalized);
+  candidate.white_ratio = white_ratio;
+  candidate.components = countComponents(normalized);
+  return {candidate};
+}
+
 std::vector<TraditionalQrDetector::Candidate> TraditionalQrDetector::findCandidates(
   const cv::Mat & mask,
   cv::Mat * grouped_debug) const
 {
-  if (params_.black_tag_mode != 0) {
+  if (params_.black_tag_mode == 1) {
     return findBlackTagCandidates(mask, grouped_debug);
+  }
+  if (params_.black_tag_mode == 2) {
+    return findBlackCodeCandidates(mask, grouped_debug);
   }
   return findWhitePartCandidates(mask, grouped_debug);
 }
